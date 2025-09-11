@@ -41,6 +41,9 @@ A modern, responsive personal portfolio website showcasing web development skill
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/fad-portfolio-v1.git
+   git clone https://github.com/fadhadwahyuaji/fad-portfolio-v1.git
+   ```
+   ```bash
    cd fad-portfolio-v1
    ```
+2. **Run index.html**
