@@ -1,7 +1,7 @@
 const roles = [
-  "Frontend Developer",
-  "Backend Developer",
   "Fullstack Developer",
+  "Mobile Developer",
+  "Web Developer",
   "AI Developer",
 ];
 let index = 0;
@@ -140,6 +140,41 @@ function initNavbarScroll() {
   }
 }
 
+// Smooth background parallax on scroll
+function initBackgroundParallax() {
+  let ticking = false;
+
+  function updateBackground() {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * -0.2;
+
+    // Subtle background movement
+    document.body.style.setProperty(
+      "--bg-translate",
+      `translate3d(0, ${rate}px, 0)`
+    );
+
+    // Dynamic opacity based on scroll
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = scrolled / maxScroll;
+    const overlayOpacity = Math.min(0.1, scrollPercent * 0.05);
+
+    document.body.style.setProperty("--overlay-opacity", overlayOpacity);
+
+    ticking = false;
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateBackground);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+}
+
 // Initialize all functions
 document.addEventListener("DOMContentLoaded", function () {
   if (typingText) typeEffect();
@@ -147,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initSmoothScroll();
   initActiveNavigation();
   initNavbarScroll();
+  initBackgroundParallax();
 });
 
 // Optimize performance with requestAnimationFrame for scroll events
