@@ -1,0 +1,100 @@
+{
+  "name": "Fadhad Wahyu Aji",
+  "role": [
+    "Software Engineer",
+    "AI Developer",
+    "Fullstack Developer",
+    "Backend Developer"
+  ],
+  "about": {
+    "shortDescription": "Fresh Graduate Software Engineer passionate about building impactful applications.",
+    "longDescription": "I am a Fresh Graduate in Software Engineering from Politeknik Negeri Indramayu with experience in developing modern web, mobile, and AI-powered applications through internships and collaborative projects. I am highly motivated to learn, possess strong analytical skills, and always eager to contribute to building scalable and user-friendly technology solutions."
+  },
+  "techStack": {
+    "frontend": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "backend": ["Node.js", "Express.js", "Laravel", "Django"],
+    "mobile": ["Flutter", "React Native"],
+    "database": ["MySQL", "PostgreSQL", "MongoDB", "Firebase"],
+    "tools": ["Git", "Docker", "Figma"],
+    "ai": ["Python", "TensorFlow", "PyTorch", "Transformers"]
+  },
+  "projects": [
+    {
+      "title": "Paddy Disease Detection System",
+      "description": "An AI-based image classification system to detect paddy leaf diseases using Swin Transformer and Vision Transformer, integrated with a chatbot for treatment recommendations.",
+      "techUsed": ["Python", "PyTorch", "Transformers", "FastAPI", "Flutter"],
+      "link": "https://github.com/fadhadwahyuaji/paddy-disease-detection",
+      "image": "assets/images/projects/paddy-ai.png"
+    },
+    {
+      "title": "Recipe Management App",
+      "description": "A mobile application with CRUD functionality for recipe categories using MySQL, Provider for state management, and Firebase as backend.",
+      "techUsed": ["Flutter", "Firebase", "MySQL", "PHP"],
+      "link": "https://github.com/fadhadwahyuaji/recipe-app",
+      "image": "assets/images/projects/recipe-app.png"
+    },
+    {
+      "title": "Portfolio Website",
+      "description": "A personal portfolio landing page built with modern animations, responsive design, and dark theme aesthetics.",
+      "techUsed": ["HTML", "CSS", "JavaScript", "GSAP"],
+      "link": "https://fadhadwahyuaji.github.io",
+      "image": "assets/images/projects/portfolio.png"
+    }
+  ],
+  "certificates": [
+    {
+      "title": "Dicoding - Machine Learning Developer",
+      "issuer": "Dicoding Indonesia",
+      "year": 2024,
+      "link": "https://www.dicoding.com/certificates/ML12345"
+    },
+    {
+      "title": "Google Cloud Fundamentals",
+      "issuer": "Google",
+      "year": 2023,
+      "link": "https://googlecloudcertificates.com/GC12345"
+    },
+    {
+      "title": "FreeCodeCamp - Responsive Web Design",
+      "issuer": "FreeCodeCamp",
+      "year": 2023,
+      "link": "https://freecodecamp.org/certificates/FCC12345"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Engineer Intern",
+      "company": "Tech Company XYZ",
+      "period": "Jul 2023 - Dec 2023",
+      "responsibilities": [
+        "Developed REST APIs with Node.js and Express.",
+        "Integrated PostgreSQL database and optimized queries.",
+        "Collaborated with frontend team for API integration."
+      ]
+    },
+    {
+      "role": "AI Research Assistant",
+      "company": "Politeknik Negeri Indramayu",
+      "period": "Jan 2024 - Jun 2024",
+      "responsibilities": [
+        "Built deep learning models for plant disease detection.",
+        "Implemented transfer learning using Transformer architectures.",
+        "Published research results in academic journal."
+      ]
+    }
+  ],
+  "contact": {
+    "email": "fadhadwahyuaji@example.com",
+    "phone": "+62 812-3456-7890",
+    "linkedin": "https://www.linkedin.com/in/fadhadwahyuaji",
+    "github": "https://github.com/fadhadwahyuaji",
+    "twitter": "https://twitter.com/fadhadwahyuaji"
+  }
+}
