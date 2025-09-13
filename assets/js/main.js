@@ -128,16 +128,18 @@ function initActiveNavigation() {
 // Navbar background on scroll
 function initNavbarScroll() {
   const navbar = document.querySelector(".navbar");
+  if (!navbar) return;
 
-  if (navbar) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        navbar.style.background = "rgba(10, 10, 10, 0.95)";
-      } else {
-        navbar.style.background = "rgba(10, 10, 10, 0.9)";
-      }
-    });
-  }
+  // Pastikan inline style dihapus agar CSS glass berlaku
+  navbar.style.removeProperty("background");
+
+  const onScroll = () => {
+    const isScrolled = window.scrollY > 50;
+    navbar.classList.toggle("is-scrolled", isScrolled);
+  };
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 }
 
 // Smooth background parallax on scroll
@@ -175,6 +177,34 @@ function initBackgroundParallax() {
   window.addEventListener("scroll", requestTick, { passive: true });
 }
 
+// Tabs (Portfolio)
+function initTabs() {
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const panels = document.querySelectorAll(".tab-content");
+  if (!tabs.length || !panels.length) return;
+
+  const activate = (name) => {
+    tabs.forEach((t) => {
+      const isActive = t.dataset.tab === name;
+      t.classList.toggle("active", isActive);
+      t.setAttribute("aria-selected", isActive ? "true" : "false");
+      t.tabIndex = isActive ? 0 : -1;
+    });
+    panels.forEach((p) => {
+      p.classList.toggle("active", p.id === name);
+      p.hidden = p.id !== name;
+    });
+  };
+
+  tabs.forEach((t) =>
+    t.addEventListener("click", () => activate(t.dataset.tab))
+  );
+
+  // Default tab (from URL ?tab=..., else "projects")
+  const urlTab = new URLSearchParams(window.location.search).get("tab");
+  activate(urlTab || "projects");
+}
+
 // Initialize all functions
 document.addEventListener("DOMContentLoaded", function () {
   if (typingText) typeEffect();
@@ -183,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initActiveNavigation();
   initNavbarScroll();
   initBackgroundParallax();
+  initTabs();
 });
 
 // Optimize performance with requestAnimationFrame for scroll events
