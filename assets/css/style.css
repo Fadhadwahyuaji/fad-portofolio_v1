@@ -323,7 +323,7 @@ body::before {
 
 /* Typing Effect */
 #typing-text {
-  border-right: 3px solid var(--primary-color);
+  border-right: 5px solid var(--primary-color);
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
@@ -331,6 +331,8 @@ body::before {
   min-height: 1.2rem;
   vertical-align: baseline;
   min-width: 10px;
+  padding-right: 0.2rem;
+  margin-left: 0.15rem;
 }
 
 @keyframes blinkCursor {
