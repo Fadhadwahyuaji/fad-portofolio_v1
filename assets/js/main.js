@@ -200,9 +200,133 @@ function initTabs() {
     t.addEventListener("click", () => activate(t.dataset.tab))
   );
 
-  // Default tab (from URL ?tab=..., else "projects")
   const urlTab = new URLSearchParams(window.location.search).get("tab");
   activate(urlTab || "projects");
+}
+
+// Certificate modal (preview image)
+function initCertificateModal() {
+  const modal = document.getElementById("image-modal");
+  if (!modal) return;
+
+  const imgEl = modal.querySelector(".modal-image");
+  const closeBtn = modal.querySelector(".modal-close");
+  const certImages = document.querySelectorAll(
+    "#certificates .certificate img"
+  );
+
+  const open = (src, alt = "Certificate") => {
+    imgEl.src = src;
+    imgEl.alt = alt;
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
+  };
+
+  const close = () => {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    imgEl.src = "";
+    imgEl.alt = "";
+  };
+
+  certImages.forEach((img) => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", () => {
+      const full = img.dataset.full || img.src; // bisa pakai data-full bila tersedia
+      open(full, img.alt || "Certificate");
+    });
+  });
+
+  // click di overlay utk close
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) close();
+  });
+  // tombol close
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  // ESC utk close
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) close();
+  });
+}
+
+/* Load More untuk projects & certificates */
+function initLoadMore() {
+  const setupLoadMore = ({
+    panelSelector,
+    containerSelector,
+    itemSelector,
+    buttonSelector,
+    initial = 6,
+    step = 6,
+  }) => {
+    const panel = document.querySelector(panelSelector);
+    if (!panel) return;
+
+    const container = panel.querySelector(containerSelector);
+    const items = Array.from(panel.querySelectorAll(itemSelector));
+    const button = panel.querySelector(buttonSelector);
+    if (!container || !button || !items.length) return;
+
+    // Jika item <= initial, sembunyikan tombol
+    if (items.length <= initial) {
+      button.style.display = "none";
+      return;
+    }
+
+    const collapseToInitial = () => {
+      items.forEach((el, i) => el.classList.toggle("is-hidden", i >= initial));
+      button.textContent = "Show more";
+      button.dataset.state = "collapsed";
+      button.style.display = "";
+    };
+
+    // Set kondisi awal
+    collapseToInitial();
+
+    button.addEventListener("click", () => {
+      const state = button.dataset.state || "collapsed";
+
+      if (state === "collapsed") {
+        // Tampilkan batch berikutnya
+        const hidden = items.filter((el) => el.classList.contains("is-hidden"));
+        hidden.slice(0, step).forEach((el) => el.classList.remove("is-hidden"));
+
+        // Jika sudah tidak ada yang tersembunyi, ubah tombol ke "Show less"
+        const stillHidden = items.some((el) =>
+          el.classList.contains("is-hidden")
+        );
+        if (!stillHidden) {
+          button.textContent = "Show less";
+          button.dataset.state = "expanded";
+        }
+      } else {
+        // Kembali ke 6 item awal
+        collapseToInitial();
+        container.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  };
+
+  setupLoadMore({
+    panelSelector: "#projects",
+    containerSelector: ".card-grid",
+    itemSelector: ".card",
+    buttonSelector: ".load-more-btn",
+    initial: 6,
+    step: 6,
+  });
+
+  setupLoadMore({
+    panelSelector: "#certificates",
+    containerSelector: ".card-grid",
+    itemSelector: ".certificate",
+    buttonSelector: ".load-more-btn",
+    initial: 6,
+    step: 6,
+  });
 }
 
 // Initialize all functions
@@ -214,6 +338,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initNavbarScroll();
   initBackgroundParallax();
   initTabs();
+  initCertificateModal();
+  initLoadMore();
 });
 
 // Optimize performance with requestAnimationFrame for scroll events
