@@ -148,7 +148,7 @@
 
       <div class="tab-content" id="projects">
         <div class="card-grid">
-          <!-- Card 1 -->
+          <!-- Card 1
           <div class="card">
             <div class="card-media">
               <img
@@ -167,73 +167,12 @@
               </p>
               <div class="card-buttons">
                 <a href="#" class="live-demo">Live Demo</a>
-                <a href="#" class="details">Details →</a>
+                <a class="details" data-project-id="1">Details →</a>
               </div>
             </div>
           </div>
 
-          <!-- Card 2 -->
-          <div class="card">
-            <div class="card-media">
-              <img
-                src="assets/assets/images/Senjanis/senajnis.png"
-                alt="Aritmatika Solver"
-              />
-            </div>
-            <div class="card-body">
-              <h3>Aritmatika Solver</h3>
-              <p>
-                Program ini dirancang untuk mempermudah pengguna dalam
-                menyelesaikan soal-soal aritmatika.
-              </p>
-              <div class="card-buttons">
-                <a href="#" class="live-demo">Live Demo</a>
-                <a href="#" class="details">Details →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="card">
-            <div class="card-media">
-              <img
-                src="assets/assets/images/Senjanis/senajnis.png"
-                alt="Aritmatika Solver"
-              />
-            </div>
-            <div class="card-body">
-              <h3>Aritmatika Solver</h3>
-              <p>
-                Program ini dirancang untuk mempermudah pengguna dalam
-                menyelesaikan soal-soal aritmatika.
-              </p>
-              <div class="card-buttons">
-                <a href="#" class="live-demo">Live Demo</a>
-                <a href="#" class="details">Details →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 1 -->
-          <div class="card">
-            <div class="card-media">
-              <img
-                src="assets/assets/images/Senjanis/senajnis.png"
-                alt="Aritmatika Solver"
-              />
-            </div>
-            <div class="card-body">
-              <h3>Aritmatika Solver</h3>
-              <p>
-                Program ini dirancang untuk mempermudah pengguna dalam
-                menyelesaikan soal-soal aritmatika.
-              </p>
-              <div class="card-buttons">
-                <a href="#" class="live-demo">Live Demo</a>
-                <a href="#" class="details">Details →</a>
-              </div>
-            </div>
-          </div>
+           -->
         </div>
 
         <div class="load-more-wrap">
@@ -367,7 +306,7 @@
       </div>
     </section>
 
-    <!-- Image Modal -->
+    <!-- Certificates Modal -->
     <div id="image-modal" class="modal-overlay" aria-hidden="true">
       <div
         class="modal-dialog"
@@ -379,6 +318,84 @@
         <img src="" alt="" class="modal-image" />
       </div>
     </div>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal-overlay" aria-hidden="true">
+      <div
+        class="modal-dialog project-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Project details"
+      >
+        <button class="modal-close" aria-label="Close project details">
+          &times;
+        </button>
+
+        <div class="modal-content">
+          <!-- Header Section -->
+          <div class="modal-header">
+            <div class="modal-gallery">
+              <div class="main-image">
+                <img src="" alt="" class="project-main-image" />
+              </div>
+              <div class="gallery-thumbnails">
+                <!-- Thumbnails will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="modal-info">
+              <div class="project-status">
+                <span class="status-badge"></span>
+              </div>
+              <h2 class="project-title"></h2>
+              <p class="project-description"></p>
+
+              <div class="project-meta">
+                <div class="meta-item">
+                  <span class="meta-label">Category:</span>
+                  <span class="meta-value project-category"></span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Duration:</span>
+                  <span class="meta-value project-duration"></span>
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a href="#" class="btn-primary project-demo" target="_blank">
+                  Live Demo ↗
+                </a>
+                <a
+                  href="#"
+                  class="btn-secondary project-github"
+                  target="_blank"
+                >
+                  GitHub →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Sections -->
+          <div class="modal-body">
+            <div class="content-section">
+              <h3>Tech Stack</h3>
+              <div class="tech-stack-list">
+                <!-- Tech stack items will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h3>Key Features</h3>
+              <ul class="features-list">
+                <!-- Features will be populated by JavaScript -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/js/main.js"></script>
   </body>
 </html>
