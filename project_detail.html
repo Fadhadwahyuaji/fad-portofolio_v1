@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Detail - Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/project_detail.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/Fadhad.ico" />
+  </head>
+  <body>
+    <!-- Loading State -->
+    <div id="loading-state" class="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p>Loading project details...</p>
+    </div>
+
+    <!-- Project Detail Content -->
+    <main
+      class="project-detail-main"
+      id="project-content"
+      style="display: none"
+    >
+      <!-- Compact Header -->
+      <section class="project-header">
+        <div class="container">
+          <div class="header-content">
+            <!-- <a href="index.html#portfolio" class="back-link">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              Back to Portfolio
+            </a> -->
+            <nav class="breadcrumb">
+              <a href="index.html">Home</a>
+              <span class="separator">/</span>
+              <a href="index.html#portfolio">Projects</a>
+              <span class="separator">/</span>
+              <span class="current" id="breadcrumb-title">Project Detail</span>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hero Section -->
+      <section class="project-hero">
+        <div class="container">
+          <div class="project-hero-content">
+            <!-- Left: Project Info -->
+            <div class="project-info">
+              <div class="project-status-container">
+                <span id="project-status" class="status-badge"></span>
+              </div>
+              <h1 id="project-title" class="project-title"></h1>
+              <p id="project-description" class="project-description"></p>
+
+              <!-- Quick Stats -->
+              <!-- <div class="project-stats">
+                <div class="stat-item">
+                  <span class="stat-number" id="tech-count">0</span>
+                  <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number" id="feature-count">0</span>
+                  <span class="stat-label">Features</span>
+                </div>
+              </div> -->
+
+              <!-- Compact Meta Info -->
+              <div class="project-meta">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <span class="meta-label">Category</span>
+                    <span class="meta-value" id="project-category"></span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Duration</span>
+                    <span class="meta-value" id="project-duration"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="project-actions" id="project-actions">
+                <!-- Buttons will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Right: Gallery -->
+            <div class="project-gallery">
+              <div class="main-image-container">
+                <img
+                  id="main-project-image"
+                  src=""
+                  alt=""
+                  class="main-project-image"
+                />
+                <div class="zoom-hint">🔍 Click to zoom</div>
+              </div>
+              <div class="gallery-thumbnails" id="gallery-thumbnails">
+                <!-- Thumbnails will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Sections -->
+      <section class="project-content">
+        <div class="container">
+          <div class="content-grid">
+            <!-- Technologies -->
+            <div class="content-section tech-section">
+              <h2>
+                <span class="section-icon">⚙️</span>
+                Technologies Used
+              </h2>
+              <div class="tech-stack-list" id="tech-stack-list">
+                <!-- Tech stack will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="content-section features-section">
+              <h2>
+                <span class="section-icon">✨</span>
+                Key Features
+              </h2>
+              <ul class="features-list" id="features-list">
+                <!-- Features will be populated by JavaScript -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Image Zoom Overlay -->
+    <div id="image-zoom-overlay" class="image-zoom-overlay">
+      <img src="" alt="" id="zoom-image" />
+      <button class="zoom-close" id="zoom-close">×</button>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      ↑
+    </button>
+
+    <script src="assets/js/project_detail.js"></script>
+  </body>
+</html>

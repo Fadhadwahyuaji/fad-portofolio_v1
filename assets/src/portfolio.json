@@ -5,210 +5,40 @@
     "description": "I am a Fresh Graduate Software Engineer passionate about creating web, mobile, and AI Developer. With hands-on experience from internships and projects, I bring a strong foundation in modern application development, problem-solving, and innovation. My goal is to deliver impactful digital solutions that add real value to organizations and users.",
     "email": "fadhadwahyuaji@gmail.com",
     "location": "Indonesia",
-    "image": "assets/assets/images/me.jpg",
+    "image": "assets/src/me.jpg",
     "socialLinks": {
       "github": "https://github.com/fadhadwahyuaji",
       "linkedin": "https://www.linkedin.com/in/fadhadwahyuaji/",
       "instagram": "https://instagram.com/fadhadd_waa"
     },
-    "techStack": ["React", "Javascript", "Node.js", "Tailwind"]
+    "techStack": ["Laravel", "Flutter", "Python", "Golang", "PostgreSQL"]
   },
   "projects": [
     {
       "id": "1",
-      "title": "E-Commerce Web Application",
-      "description": "Full-stack e-commerce platform dengan fitur lengkap seperti shopping cart, payment gateway, admin dashboard, dan inventory management. Dibangun menggunakan teknologi modern dengan fokus pada performa dan user experience.",
+      "title": "E-Commerce Web : Senjanis",
+      "description": "Online Ordering System Senjanis is a web-based e-commerce application for food ordering, developed as a team project for the Project 1 course. The system aims to provide a seamless online food ordering experience for customers while enabling administrators to efficiently manage products, orders, and user data.",
       "shortDescription": "Full-stack e-commerce platform dengan fitur shopping cart dan payment gateway",
-      "image": "assets/assets/images/projects/ecommerce.jpg",
+      "image": "assets/src/projects/Senjanis/senjanis.png",
       "gallery": [
-        "assets/assets/images/projects/ecommerce-1.jpg",
-        "assets/assets/images/projects/ecommerce-2.jpg",
-        "assets/assets/images/projects/ecommerce-3.jpg"
+        "assets/src/projects/Senjanis/senjanis.png",
+        "assets/src/projects/Senjanis/senjanis.png"
       ],
-      "techStack": [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Tailwind CSS",
-        "Stripe API",
-        "JWT"
-      ],
+      "techStack": ["Laravel", "MySQL", "Midtrans", "RajaOngkir", "JWT"],
       "features": [
-        "User authentication & authorization",
-        "Shopping cart & wishlist",
-        "Payment integration (Stripe)",
-        "Admin dashboard",
-        "Inventory management",
-        "Order tracking",
-        "Responsive design"
+        "User Management: Registration, login, and user data management",
+        "Food Ordering System: Online food ordering with clear transaction flow",
+        "Payment Integration: Secure payments using Midtrans",
+        "Shipping Cost Calculation: Automatic fee calculation via RajaOngkir",
+        "Admin Dashboard: Manage products, orders, and customer data",
+        "Customer Dashboard: Track orders and view transaction history"
       ],
       "demoUrl": "https://demo-ecommerce.example.com",
       "githubUrl": "https://github.com/fadhadwahyuaji/ecommerce-app",
       "status": "Completed",
       "category": "Web Development",
-      "startDate": "2024-01-15",
-      "endDate": "2024-03-20",
-      "isFeatured": true
-    },
-    {
-      "id": "2",
-      "title": "Task Management Mobile App",
-      "description": "Aplikasi mobile untuk manajemen task dengan fitur kolaborasi tim, notifikasi real-time, dan sinkronisasi cloud. Tersedia untuk Android dan iOS dengan desain yang intuitif dan mudah digunakan.",
-      "shortDescription": "Aplikasi mobile untuk manajemen task dengan kolaborasi tim",
-      "image": "assets/assets/images/projects/taskapp.jpg",
-      "gallery": [
-        "assets/assets/images/projects/taskapp-1.jpg",
-        "assets/assets/images/projects/taskapp-2.jpg"
-      ],
-      "techStack": [
-        "React Native",
-        "Firebase",
-        "Redux",
-        "Push Notifications",
-        "AsyncStorage"
-      ],
-      "features": [
-        "Create & manage tasks",
-        "Team collaboration",
-        "Real-time notifications",
-        "Cloud synchronization",
-        "Offline support",
-        "Dark/Light theme"
-      ],
-      "demoUrl": "https://play.google.com/store/apps/example",
-      "githubUrl": "https://github.com/fadhadwahyuaji/task-management-app",
-      "status": "Completed",
-      "category": "Mobile Development",
-      "startDate": "2024-02-01",
-      "endDate": "2024-04-15",
-      "isFeatured": true
-    },
-    {
-      "id": "3",
-      "title": "AI Chatbot Assistant",
-      "description": "Intelligent chatbot menggunakan Natural Language Processing untuk customer service automation. Dapat memahami konteks percakapan dan memberikan respons yang relevan dengan tingkat akurasi tinggi.",
-      "shortDescription": "AI Chatbot dengan NLP untuk customer service automation",
-      "image": "assets/assets/images/projects/chatbot.jpg",
-      "gallery": [
-        "assets/assets/images/projects/chatbot-1.jpg",
-        "assets/assets/images/projects/chatbot-2.jpg"
-      ],
-      "techStack": [
-        "Python",
-        "TensorFlow",
-        "NLTK",
-        "Flask",
-        "OpenAI API",
-        "WebSocket"
-      ],
-      "features": [
-        "Natural language understanding",
-        "Context-aware responses",
-        "Multi-language support",
-        "Integration with various platforms",
-        "Analytics dashboard",
-        "Custom training data"
-      ],
-      "demoUrl": "https://chatbot-demo.example.com",
-      "githubUrl": "https://github.com/fadhadwahyuaji/ai-chatbot",
-      "status": "In Progress",
-      "category": "AI Development",
-      "startDate": "2024-03-01",
-      "endDate": null,
-      "isFeatured": false
-    },
-    {
-      "id": "4",
-      "title": "Weather Dashboard PWA",
-      "description": "Progressive Web App untuk prakiraan cuaca dengan data real-time dari multiple API. Mendukung offline mode dan dapat diinstall seperti native app dengan push notifications.",
-      "shortDescription": "PWA untuk prakiraan cuaca dengan offline support",
-      "image": "assets/assets/images/projects/weather.jpg",
-      "gallery": ["assets/assets/images/projects/weather-1.jpg"],
-      "techStack": [
-        "Vue.js",
-        "Service Worker",
-        "IndexedDB",
-        "Weather API",
-        "Chart.js",
-        "PWA"
-      ],
-      "features": [
-        "Real-time weather data",
-        "7-day forecast",
-        "Offline functionality",
-        "Push notifications",
-        "Installable PWA",
-        "Geolocation support"
-      ],
-      "demoUrl": "https://weather-pwa.example.com",
-      "githubUrl": "https://github.com/fadhadwahyuaji/weather-pwa",
-      "status": "Completed",
-      "category": "Web Development",
-      "startDate": "2023-11-01",
-      "endDate": "2023-12-15",
-      "isFeatured": false
-    },
-    {
-      "id": "5",
-      "title": "Blockchain Voting System",
-      "description": "Sistem voting berbasis blockchain untuk memastikan transparansi dan keamanan dalam proses pemilihan. Menggunakan smart contract untuk mencegah manipulasi suara.",
-      "shortDescription": "Sistem voting blockchain dengan smart contract",
-      "image": "assets/assets/images/projects/blockchain.jpg",
-      "gallery": [],
-      "techStack": [
-        "Solidity",
-        "Web3.js",
-        "Ethereum",
-        "MetaMask",
-        "React.js",
-        "Truffle"
-      ],
-      "features": [
-        "Secure voting mechanism",
-        "Smart contract integration",
-        "Transparent results",
-        "Voter authentication",
-        "Real-time counting",
-        "Audit trail"
-      ],
-      "demoUrl": null,
-      "githubUrl": "https://github.com/fadhadwahyuaji/blockchain-voting",
-      "status": "Completed",
-      "category": "Blockchain",
-      "startDate": "2023-09-01",
-      "endDate": "2023-10-30",
-      "isFeatured": false
-    },
-    {
-      "id": "6",
-      "title": "Learning Management System",
-      "description": "Platform pembelajaran online dengan fitur video streaming, quiz interaktif, progress tracking, dan sertifikasi. Mendukung multiple format konten dan gamifikasi.",
-      "shortDescription": "LMS dengan video streaming dan progress tracking",
-      "image": "assets/assets/images/projects/lms.jpg",
-      "gallery": [],
-      "techStack": [
-        "Next.js",
-        "PostgreSQL",
-        "Prisma",
-        "AWS S3",
-        "Video.js",
-        "Stripe"
-      ],
-      "features": [
-        "Video streaming",
-        "Interactive quizzes",
-        "Progress tracking",
-        "Certificate generation",
-        "Discussion forums",
-        "Payment integration"
-      ],
-      "demoUrl": "https://lms-demo.example.com",
-      "githubUrl": "https://github.com/fadhadwahyuaji/lms-platform",
-      "status": "In Progress",
-      "category": "Web Development",
-      "startDate": "2024-04-01",
-      "endDate": null,
+      "startDate": "2023-03-15",
+      "endDate": "2023-05-20",
       "isFeatured": true
     }
   ],
@@ -218,7 +48,7 @@
       "title": "SOLID Principles Course",
       "issuer": "Dicoding",
       "date": "2024-12-03",
-      "image": "assets/src/certificates/sertifikat_SOLID_course_dicoding_169_3735348_031224171118_page-0001.jpg",
+      "image": "assets/src/certificates/Dicoding_Solid.jpg",
       "credentialUrl": "https://dicoding.com/certificates/169_3735348",
       "skills": [
         "Software Engineering",
@@ -227,49 +57,121 @@
       ]
     },
     {
-      "id": "2",
-      "title": "Google Data Analytics Professional Certificate",
+      "id": "7",
+      "title": "Memulai Pemrograman dengan Java",
+      "issuer": "Dicoding",
+      "date": "",
+      "image": "assets/src/certificates/Dicoding_Java.jpg",
+      "credentialUrl": "",
+      "skills": ["Java", "OOP", "Programming Basics"]
+    },
+    {
+      "id": "8",
+      "title": "Coursera: Blog Website",
       "issuer": "Coursera",
-      "date": "2024-11-15",
-      "image": "assets/src/certificates/Blog Coursera CVL7LW5Q2GGJ_page-0001.jpg",
-      "credentialUrl": "https://coursera.org/verify/CVL7LW5Q2GGJ",
-      "skills": ["Data Analysis", "SQL", "Tableau", "R Programming"]
+      "date": "",
+      "image": "assets/src/certificates/Coursera_Blog.jpg",
+      "credentialUrl": "",
+      "skills": ["Blog", "Content", "Website"]
     },
     {
-      "id": "3",
-      "title": "AWS Certified Developer Associate",
-      "issuer": "Amazon Web Services",
-      "date": "2024-10-20",
-      "image": "assets/src/certificates/aws-developer.jpg",
-      "credentialUrl": "https://aws.amazon.com/verification",
-      "skills": ["AWS", "Cloud Computing", "DevOps", "Lambda"]
+      "id": "9",
+      "title": "Coursera: Microsoft Excel",
+      "issuer": "Coursera",
+      "date": "",
+      "image": "assets/src/certificates/Coursera_Exel.jpg",
+      "credentialUrl": "",
+      "skills": ["Excel", "Spreadsheets", "Data Analysis"]
     },
     {
-      "id": "4",
-      "title": "React Developer Certification",
-      "issuer": "Meta",
-      "date": "2024-09-10",
-      "image": "assets/src/certificates/react-meta.jpg",
-      "credentialUrl": "https://coursera.org/verify/react-cert",
-      "skills": ["React.js", "JavaScript", "Frontend Development"]
+      "id": "10",
+      "title": "Coursera: Microsoft Word",
+      "issuer": "Coursera",
+      "date": "",
+      "image": "assets/src/certificates/Coursera_Word.jpg",
+      "credentialUrl": "",
+      "skills": ["Documentation", "Formatting"]
     },
     {
-      "id": "5",
-      "title": "Machine Learning Specialization",
-      "issuer": "Stanford University",
-      "date": "2024-08-05",
-      "image": "assets/src/certificates/ml-stanford.jpg",
-      "credentialUrl": "https://coursera.org/verify/ml-spec",
-      "skills": ["Machine Learning", "Python", "TensorFlow", "Deep Learning"]
+      "id": "11",
+      "title": "Coursera: WordPress",
+      "issuer": "Coursera",
+      "date": "",
+      "image": "assets/src/certificates/Coursera_Wordpress.jpg",
+      "credentialUrl": "",
+      "skills": ["WordPress", "CMS", "Website Building"]
     },
     {
-      "id": "6",
-      "title": "Node.js Application Development",
-      "issuer": "IBM",
-      "date": "2024-07-15",
-      "image": "assets/src/certificates/nodejs-ibm.jpg",
-      "credentialUrl": "https://ibm.com/verify/nodejs",
-      "skills": ["Node.js", "Express.js", "MongoDB", "REST API"]
+      "id": "12",
+      "title": "Coursera: WordPress (Full)",
+      "issuer": "Coursera",
+      "date": "",
+      "image": "assets/src/certificates/Coursera_WordpressFull.jpg",
+      "credentialUrl": "",
+      "skills": ["WordPress", "CMS", "Website Building"]
+    },
+    {
+      "id": "13",
+      "title": "DQLab: Fundamental SQL",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_Fundamental SQL.jpg",
+      "credentialUrl": "",
+      "skills": ["SQL", "Database", "Query"]
+    },
+    {
+      "id": "14",
+      "title": "DQLab: Guide to Learn R",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_guide to learn R.jpg",
+      "credentialUrl": "",
+      "skills": ["R", "Data Analysis"]
+    },
+    {
+      "id": "15",
+      "title": "DQLab: Guide SQL",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_GuideSQL.jpg",
+      "credentialUrl": "",
+      "skills": ["SQL", "Database"]
+    },
+    {
+      "id": "16",
+      "title": "DQLab: Introduction to Data Science with R",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_introduction data science with R.jpg",
+      "credentialUrl": "",
+      "skills": ["R", "Data Science", "Statistics"]
+    },
+    {
+      "id": "17",
+      "title": "DQLab: Python Fundamental for Data Science",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_python Fundamental data science.jpg",
+      "credentialUrl": "",
+      "skills": ["Python", "Data Science"]
+    },
+    {
+      "id": "18",
+      "title": "DQLab: Python Introduction to Data Science",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_python introduction data science.jpg",
+      "credentialUrl": "",
+      "skills": ["Python", "Data Science"]
+    },
+    {
+      "id": "19",
+      "title": "DQLab: R Fundamental for Data Science",
+      "issuer": "DQLab",
+      "date": "",
+      "image": "assets/src/certificates/DQLAB_R Fundamental data science.jpg",
+      "credentialUrl": "",
+      "skills": ["R", "Data Science"]
     }
   ],
   "techStack": [

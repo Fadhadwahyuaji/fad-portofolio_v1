@@ -56,7 +56,7 @@ function initSmoothScroll() {
       if (targetSection) {
         const navbar = document.querySelector(".navbar");
         const navbarHeight = navbar ? navbar.offsetHeight : 0;
-        const targetPosition = targetSection.offsetTop - navbarHeight - 20;
+        const targetPosition = targetSection.offsetTop - navbarHeight + 50;
 
         window.scrollTo({
           top: targetPosition,
@@ -82,7 +82,7 @@ function initActiveNavigation() {
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
   function updateActiveLink() {
-    const scrollPosition = window.scrollY + 150;
+    const scrollPosition = window.scrollY + 50;
 
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -186,16 +186,13 @@ function initTabs() {
   activate(urlTab || "projects");
 }
 
-// Certificate modal (preview image)
+// Certificate modal (preview image) - Updated untuk dynamic content
 function initCertificateModal() {
   const modal = document.getElementById("image-modal");
   if (!modal) return;
 
   const imgEl = modal.querySelector(".modal-image");
   const closeBtn = modal.querySelector(".modal-close");
-  const certImages = document.querySelectorAll(
-    "#certificates .certificate img"
-  );
 
   const open = (src, alt = "Certificate") => {
     imgEl.src = src;
@@ -216,13 +213,30 @@ function initCertificateModal() {
     imgEl.alt = "";
   };
 
-  certImages.forEach((img) => {
-    img.style.cursor = "zoom-in";
-    img.addEventListener("click", () => {
-      const full = img.dataset.full || img.src;
-      open(full, img.alt || "Certificate");
+  // Re-bind untuk semua certificate images (termasuk yang dinamis)
+  const bindCertificateImages = () => {
+    const certImages = document.querySelectorAll(
+      "#certificates .certificate img"
+    );
+    certImages.forEach((img) => {
+      img.style.cursor = "zoom-in";
+      // Remove existing listeners
+      img.removeEventListener("click", img._certClickHandler);
+
+      // Add new listener
+      img._certClickHandler = () => {
+        const full = img.dataset.full || img.src;
+        open(full, img.alt || "Certificate");
+      };
+      img.addEventListener("click", img._certClickHandler);
     });
-  });
+  };
+
+  // Initial bind
+  bindCertificateImages();
+
+  // Re-bind setiap kali certificates di-render ulang
+  window.rebindCertificateModal = bindCertificateImages;
 
   // Click overlay to close
   modal.addEventListener("click", (e) => {
@@ -317,7 +331,7 @@ function initLoadMore() {
 
   setupLoadMore({
     panelSelector: "#certificates",
-    containerSelector: ".card-grid",
+    containerSelector: ".certificate-grid",
     itemSelector: ".certificate",
     buttonSelector: ".load-more-btn",
     initial: 6,
@@ -440,193 +454,17 @@ function attachProjectModalListeners() {
   });
 }
 
-// Handle details button click
 function handleDetailsClick(e) {
   e.preventDefault();
   const projectId = e.target.getAttribute("data-project-id");
 
   if (!projectId) {
-    console.error("No project ID found on button");
+    console.error("Project ID not found");
     return;
   }
 
-  console.log("Details button clicked, project ID:", projectId);
-  openProjectModal(projectId);
-}
-
-// Initialize project modal
-function initProjectModal() {
-  const modal = document.getElementById("project-modal");
-  if (!modal) return;
-
-  const closeBtn = modal.querySelector(".modal-close");
-
-  // Function to format date range
-  function formatDateRange(startDate, endDate) {
-    try {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      const options = { year: "numeric", month: "short" };
-      return `${start.toLocaleDateString(
-        "en-US",
-        options
-      )} - ${end.toLocaleDateString("en-US", options)}`;
-    } catch (error) {
-      console.error("Error formatting dates:", error);
-      return "Date not available";
-    }
-  }
-
-  // Function to open modal with project data
-  window.openProjectModal = function (projectId) {
-    const project = projectsData.find((p) => p.id === projectId);
-    if (!project) {
-      console.error("Project not found:", projectId);
-      return;
-    }
-
-    console.log("Opening modal for project:", project.title);
-
-    // Populate modal content safely
-    const titleEl = modal.querySelector(".project-title");
-    const descEl = modal.querySelector(".project-description");
-    const categoryEl = modal.querySelector(".project-category");
-    const durationEl = modal.querySelector(".project-duration");
-    const statusBadge = modal.querySelector(".status-badge");
-    const mainImage = modal.querySelector(".project-main-image");
-    const thumbnailsContainer = modal.querySelector(".gallery-thumbnails");
-
-    if (titleEl) titleEl.textContent = project.title;
-    if (descEl) descEl.textContent = project.description;
-    if (categoryEl) categoryEl.textContent = project.category;
-    if (durationEl) {
-      durationEl.textContent = formatDateRange(
-        project.startDate,
-        project.endDate
-      );
-    }
-
-    // Status badge
-    if (statusBadge) {
-      statusBadge.textContent = project.status;
-      statusBadge.className = `status-badge ${project.status
-        .toLowerCase()
-        .replace(/\s+/g, "-")}`;
-    }
-
-    // Main image
-    if (mainImage) {
-      mainImage.src = project.image;
-      mainImage.alt = project.title;
-    }
-
-    // Gallery thumbnails
-    if (thumbnailsContainer) {
-      thumbnailsContainer.innerHTML = "";
-      if (project.gallery && project.gallery.length > 0) {
-        project.gallery.forEach((imgSrc, index) => {
-          const thumbnail = document.createElement("div");
-          thumbnail.className = `thumbnail ${index === 0 ? "active" : ""}`;
-          thumbnail.innerHTML = `<img src="${imgSrc}" alt="${
-            project.title
-          } - Image ${index + 1}" loading="lazy">`;
-
-          thumbnail.addEventListener("click", () => {
-            if (mainImage) {
-              mainImage.src = imgSrc;
-              thumbnailsContainer
-                .querySelectorAll(".thumbnail")
-                .forEach((t) => t.classList.remove("active"));
-              thumbnail.classList.add("active");
-            }
-          });
-
-          thumbnailsContainer.appendChild(thumbnail);
-        });
-      }
-    }
-
-    // Tech stack
-    const techStackContainer = modal.querySelector(".tech-stack-list");
-    if (techStackContainer && project.techStack) {
-      techStackContainer.innerHTML = "";
-      project.techStack.forEach((tech) => {
-        const techItem = document.createElement("span");
-        techItem.className = "tech-stack-item";
-        techItem.textContent = tech;
-        techStackContainer.appendChild(techItem);
-      });
-    }
-
-    // Features
-    const featuresList = modal.querySelector(".features-list");
-    if (featuresList && project.features) {
-      featuresList.innerHTML = "";
-      project.features.forEach((feature) => {
-        const featureItem = document.createElement("li");
-        featureItem.textContent = feature;
-        featuresList.appendChild(featureItem);
-      });
-    }
-
-    // Action buttons
-    const demoBtn = modal.querySelector(".project-demo");
-    const githubBtn = modal.querySelector(".project-github");
-
-    if (demoBtn) {
-      if (project.demoUrl) {
-        demoBtn.href = project.demoUrl;
-        demoBtn.style.display = "flex";
-        demoBtn.setAttribute("target", "_blank");
-        demoBtn.setAttribute("rel", "noopener");
-      } else {
-        demoBtn.style.display = "none";
-      }
-    }
-
-    if (githubBtn) {
-      if (project.githubUrl && project.githubUrl !== "#") {
-        githubBtn.href = project.githubUrl;
-        githubBtn.style.display = "flex";
-        githubBtn.setAttribute("target", "_blank");
-        githubBtn.setAttribute("rel", "noopener");
-      } else {
-        githubBtn.style.display = "none";
-      }
-    }
-
-    // Show modal
-    modal.classList.add("active");
-    modal.style.display = "flex";
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-    if (closeBtn) closeBtn.focus({ preventScroll: true });
-  };
-
-  // Function to close modal
-  function closeProjectModal() {
-    modal.classList.remove("active");
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-  }
-
-  // Event listeners for closing modal
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeProjectModal);
-  }
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeProjectModal();
-    }
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("active")) {
-      closeProjectModal();
-    }
-  });
+  // Redirect ke halaman detail project
+  window.location.href = `project_detail.html?id=${projectId}`;
 }
 
 // Mobile Menu Toggle
@@ -754,7 +592,7 @@ function initHeroButtons() {
       const portfolioSection = document.getElementById("portfolio");
       if (portfolioSection) {
         const navbar = document.querySelector(".navbar");
-        const offset = navbar ? navbar.offsetHeight + 20 : 80;
+        const offset = navbar ? navbar.offsetHeight - 80 : 10;
         const targetPosition = portfolioSection.offsetTop - offset;
 
         window.scrollTo({
@@ -771,7 +609,7 @@ function initHeroButtons() {
       const contactSection = document.getElementById("contact");
       if (contactSection) {
         const navbar = document.querySelector(".navbar");
-        const offset = navbar ? navbar.offsetHeight + 20 : 80;
+        const offset = navbar ? navbar.offsetHeight - 80 : 10;
         const targetPosition = contactSection.offsetTop - offset;
 
         window.scrollTo({
@@ -849,6 +687,174 @@ function initContactForm() {
   });
 }
 
+// Render profile (hero, social, contact) dari JSON
+function renderProfile() {
+  const profile = appData?.profile;
+  if (!profile) return;
+
+  // Hero name
+  const nameSpan = document.querySelector(".hero-title .title-prefix");
+  if (nameSpan && profile.name) nameSpan.textContent = profile.name;
+
+  // Hero description
+  const descEl = document.querySelector(".hero-description");
+  if (descEl && profile.description) descEl.textContent = profile.description;
+
+  // Hero image
+  const heroImg = document.querySelector(".hero-image img");
+  if (heroImg && profile.image) {
+    heroImg.src = profile.image;
+    heroImg.alt = profile.name || "Profile picture";
+  }
+
+  // Hero tech stack (chips)
+  const heroTechWrap = document.querySelector(".hero-content .tech-stack");
+  if (heroTechWrap && Array.isArray(profile.techStack)) {
+    heroTechWrap.innerHTML = "";
+    profile.techStack.forEach((tech) => {
+      const span = document.createElement("span");
+      span.className = "tech-item";
+      span.textContent = tech;
+      heroTechWrap.appendChild(span);
+    });
+  }
+
+  // Social links (hero)
+  const social = profile.socialLinks || {};
+  const heroLinks = document.querySelectorAll(".social-links a");
+  if (heroLinks[0] && social.github) heroLinks[0].href = social.github;
+  if (heroLinks[1] && social.linkedin) heroLinks[1].href = social.linkedin;
+  if (heroLinks[2] && social.instagram) heroLinks[2].href = social.instagram;
+
+  // Contact card links
+  const linkedinLink = document.querySelector(".contact-link.linkedin");
+  if (linkedinLink && social.linkedin) {
+    linkedinLink.href = social.linkedin;
+    const valueEl = linkedinLink.querySelector(".contact-value");
+    if (valueEl) {
+      try {
+        valueEl.textContent =
+          new URL(social.linkedin).pathname.replaceAll("/", "") || "LinkedIn";
+      } catch {
+        valueEl.textContent = social.linkedin;
+      }
+    }
+  }
+
+  const emailLink = document.querySelector(".contact-link.email");
+  if (emailLink && profile.email) {
+    emailLink.href = `mailto:${profile.email}`;
+    const valueEl = emailLink.querySelector(".contact-value");
+    if (valueEl) valueEl.textContent = profile.email;
+  }
+
+  const igLink = document.querySelector(".contact-link.instagram");
+  if (igLink && social.instagram) {
+    igLink.href = social.instagram;
+    const valueEl = igLink.querySelector(".contact-value");
+    if (valueEl) {
+      try {
+        valueEl.textContent =
+          "@" + new URL(social.instagram).pathname.replaceAll("/", "");
+      } catch {
+        valueEl.textContent = social.instagram;
+      }
+    }
+  }
+}
+
+// Render certificates dari JSON
+function renderCertificates() {
+  const grid = document.querySelector("#certificates .certificate-grid");
+  if (!grid) return;
+
+  const certs = Array.isArray(appData?.certificates)
+    ? appData.certificates
+    : [];
+  grid.innerHTML = "";
+
+  certs.forEach((cert) => {
+    const item = document.createElement("div");
+    item.className = "certificate";
+    item.innerHTML = `<img src="${cert.image}" alt="${
+      cert.title || "Certificate"
+    }" loading="lazy" data-full="${cert.image}">`;
+    grid.appendChild(item);
+  });
+}
+
+// Render Tech Stack tab dari JSON
+function renderTechStackTab() {
+  const grid = document.querySelector("#techstack .techstack-grid");
+  if (!grid) return;
+
+  const stack = Array.isArray(appData?.techStack) ? appData.techStack : [];
+  grid.innerHTML = "";
+
+  stack.forEach((tech) => {
+    const card = document.createElement("div");
+    card.className = "card-techstack";
+    card.innerHTML = `
+      <div class="stack-icon">
+        <img src="${tech.icon}" alt="${tech.name}" />
+      </div>
+      <span>${tech.name}</span>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Load semua data dari JSON lalu render UI
+async function loadAppData() {
+  try {
+    const url = `assets/src/portfolio.json?t=${Date.now()}`; // cache buster
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+    const data = await response.json();
+    appData = data || {};
+    projectsData = Array.isArray(data.projects) ? data.projects : [];
+
+    // Render semua bagian UI
+    renderProfile();
+    generateProjectCards();
+    renderCertificates();
+    renderTechStackTab();
+
+    return Promise.resolve();
+  } catch (error) {
+    console.error("Error loading app data:", error);
+
+    // Fallback minimal untuk projects
+    projectsData = [
+      {
+        id: "1",
+        title: "Fallback Project",
+        description: "This is a fallback project when JSON fails to load.",
+        shortDescription: "Fallback project for error handling",
+        image: "assets/assets/images/Senjanis/senajnis.png",
+        gallery: ["assets/assets/images/Senjanis/senajnis.png"],
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+          "Basic functionality",
+          "Responsive design",
+          "Error handling",
+        ],
+        demoUrl: null,
+        githubUrl: "#",
+        status: "Completed",
+        category: "Web Development",
+        startDate: "2024-01-01",
+        endDate: "2024-01-15",
+        isFeatured: false,
+      },
+    ];
+
+    generateProjectCards();
+    return Promise.resolve();
+  }
+}
+
 // Initialize all functions
 async function initializeApp() {
   try {
@@ -871,8 +877,9 @@ async function initializeApp() {
 
     // Load project data and initialize related components
     await loadProjectsData();
-    initProjectModal();
     initLoadMore();
+    // Load semua data dan render UI
+    await loadAppData();
 
     console.log("App initialized successfully");
   } catch (error) {
