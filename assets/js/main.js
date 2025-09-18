@@ -218,16 +218,26 @@ function initCertificateModal() {
     const certImages = document.querySelectorAll(
       "#certificates .certificate img"
     );
+
+    console.log("Binding certificate images:", certImages.length); // Debug log
+
     certImages.forEach((img) => {
       img.style.cursor = "zoom-in";
-      // Remove existing listeners
-      img.removeEventListener("click", img._certClickHandler);
+
+      // Remove existing listeners to prevent duplicates
+      if (img._certClickHandler) {
+        img.removeEventListener("click", img._certClickHandler);
+      }
 
       // Add new listener
-      img._certClickHandler = () => {
+      img._certClickHandler = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const full = img.dataset.full || img.src;
+        console.log("Opening certificate modal:", full); // Debug log
         open(full, img.alt || "Certificate");
       };
+
       img.addEventListener("click", img._certClickHandler);
     });
   };
@@ -235,7 +245,7 @@ function initCertificateModal() {
   // Initial bind
   bindCertificateImages();
 
-  // Re-bind setiap kali certificates di-render ulang
+  // Expose function globally untuk re-bind
   window.rebindCertificateModal = bindCertificateImages;
 
   // Click overlay to close
@@ -252,7 +262,7 @@ function initCertificateModal() {
   });
 }
 
-// Load More functionality
+// Load More functionality - Updated untuk certificates
 function initLoadMore() {
   const setupLoadMore = ({
     panelSelector,
@@ -266,58 +276,85 @@ function initLoadMore() {
     if (!panel) return;
 
     const container = panel.querySelector(containerSelector);
-    const items = Array.from(panel.querySelectorAll(itemSelector));
     const button = panel.querySelector(buttonSelector);
-    if (!container || !button || !items.length) return;
+    if (!container || !button) return;
 
-    // Hide button if items <= initial
-    if (items.length <= initial) {
-      button.style.display = "none";
-      return;
-    }
+    const updateItems = () => {
+      const items = Array.from(panel.querySelectorAll(itemSelector));
 
-    const collapseToInitial = () => {
-      items.forEach((el, i) => {
-        el.style.display = i >= initial ? "none" : "";
+      // Hide button if items <= initial
+      if (items.length <= initial) {
+        button.style.display = "none";
+        return;
+      }
+
+      const collapseToInitial = () => {
+        items.forEach((el, i) => {
+          el.style.display = i >= initial ? "none" : "";
+        });
+        button.textContent = button.dataset.showMoreText || "Show more";
+        button.dataset.state = "collapsed";
+        button.style.display = "";
+      };
+
+      // Set initial state
+      collapseToInitial();
+
+      // Remove existing listener
+      button.onclick = null;
+
+      button.addEventListener("click", () => {
+        const state = button.dataset.state || "collapsed";
+
+        if (state === "collapsed") {
+          // Show next batch
+          let visibleCount = 0;
+          items.forEach((el) => {
+            if (el.style.display !== "none") visibleCount++;
+          });
+
+          for (
+            let i = visibleCount;
+            i < Math.min(visibleCount + step, items.length);
+            i++
+          ) {
+            items[i].style.display = "";
+          }
+
+          // Check if all items are visible
+          const allVisible = items.every((el) => el.style.display !== "none");
+          if (allVisible) {
+            button.textContent = button.dataset.showLessText || "Show less";
+            button.dataset.state = "expanded";
+          }
+
+          // Re-bind certificate modal untuk item baru yang muncul
+          if (
+            panelSelector === "#certificates" &&
+            window.rebindCertificateModal
+          ) {
+            setTimeout(() => {
+              window.rebindCertificateModal();
+            }, 50);
+          }
+        } else {
+          // Collapse to initial
+          collapseToInitial();
+          container.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       });
-      button.textContent = "Show more";
-      button.dataset.state = "collapsed";
-      button.style.display = "";
     };
 
-    // Set initial state
-    collapseToInitial();
+    // Update items initially and on re-render
+    updateItems();
 
-    button.addEventListener("click", () => {
-      const state = button.dataset.state || "collapsed";
-
-      if (state === "collapsed") {
-        // Show next batch
-        let visibleCount = 0;
-        items.forEach((el) => {
-          if (el.style.display !== "none") visibleCount++;
-        });
-
-        for (
-          let i = visibleCount;
-          i < Math.min(visibleCount + step, items.length);
-          i++
-        ) {
-          items[i].style.display = "";
-        }
-
-        // Check if all items are visible
-        const allVisible = items.every((el) => el.style.display !== "none");
-        if (allVisible) {
-          button.textContent = "Show less";
-          button.dataset.state = "expanded";
-        }
-      } else {
-        // Collapse to initial
-        collapseToInitial();
-        container.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
+    // Re-run setup when certificates are updated
+    if (panelSelector === "#certificates") {
+      const observer = new MutationObserver(() => {
+        updateItems();
+      });
+      observer.observe(container, { childList: true });
+    }
   };
 
   setupLoadMore({
@@ -334,8 +371,8 @@ function initLoadMore() {
     containerSelector: ".certificate-grid",
     itemSelector: ".certificate",
     buttonSelector: ".load-more-btn",
-    initial: 6,
-    step: 6,
+    initial: 8,
+    step: 8,
   });
 }
 
@@ -396,7 +433,14 @@ function generateProjectCards() {
   // Clear existing cards
   projectsContainer.innerHTML = "";
 
-  projectsData.forEach((project) => {
+  // Sort projects by ID descending (project terbaru di atas)
+  const sortedProjects = [...projectsData].sort((a, b) => {
+    const idA = parseInt(a.id) || 0;
+    const idB = parseInt(b.id) || 0;
+    return idB - idA; // Descending order (ID besar ke kecil)
+  });
+
+  sortedProjects.forEach((project) => {
     const projectCard = createProjectCard(project);
     projectsContainer.appendChild(projectCard);
   });
@@ -781,6 +825,13 @@ function renderCertificates() {
     }" loading="lazy" data-full="${cert.image}">`;
     grid.appendChild(item);
   });
+
+  // Re-bind modal listeners setelah certificates di-render
+  setTimeout(() => {
+    if (window.rebindCertificateModal) {
+      window.rebindCertificateModal();
+    }
+  }, 100);
 }
 
 // Render Tech Stack tab dari JSON
@@ -818,7 +869,7 @@ async function loadAppData() {
     // Render semua bagian UI
     renderProfile();
     generateProjectCards();
-    renderCertificates();
+    renderCertificates(); // Ini akan otomatis re-bind modal
     renderTechStackTab();
 
     return Promise.resolve();
@@ -877,9 +928,12 @@ async function initializeApp() {
 
     // Load project data and initialize related components
     await loadProjectsData();
-    initLoadMore();
     // Load semua data dan render UI
     await loadAppData();
+
+    setTimeout(() => {
+      initLoadMore();
+    }, 300);
 
     console.log("App initialized successfully");
   } catch (error) {

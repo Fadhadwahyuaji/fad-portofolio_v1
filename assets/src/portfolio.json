@@ -5,7 +5,7 @@
     "description": "I am a Fresh Graduate Software Engineer passionate about creating web, mobile, and AI Developer. With hands-on experience from internships and projects, I bring a strong foundation in modern application development, problem-solving, and innovation. My goal is to deliver impactful digital solutions that add real value to organizations and users.",
     "email": "fadhadwahyuaji@gmail.com",
     "location": "Indonesia",
-    "image": "assets/src/me.jpg",
+    "image": "assets/src/fadhad.png",
     "socialLinks": {
       "github": "https://github.com/fadhadwahyuaji",
       "linkedin": "https://www.linkedin.com/in/fadhadwahyuaji/",
@@ -34,11 +34,130 @@
         "Customer Dashboard: Track orders and view transaction history"
       ],
       "demoUrl": "https://demo-ecommerce.example.com",
-      "githubUrl": "https://github.com/fadhadwahyuaji/ecommerce-app",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/SENJANIS.git",
       "status": "Completed",
       "category": "Web Development",
       "startDate": "2023-03-15",
       "endDate": "2023-05-20",
+      "isFeatured": true
+    },
+    {
+      "id": "2",
+      "title": "Employee Management Information System Development ",
+      "description": "This project began with research to align user needs and technical feasibility. I first contributed as a Mobile Programmer, designing the UI and integrating the mobile app with the web system, before shifting fully to web development with Laravel to build core features and ensure a responsive experience. Throughout the process, I gained hands-on experience in cross-platform development, problem-solving, teamwork, and the complete software development lifecycle, from planning to documentation.",
+      "shortDescription": "Full-stack e-commerce platform dengan fitur shopping cart dan payment gateway",
+      "image": "assets/src/projects/Senjanis/senjanis.png",
+      "gallery": [
+        "assets/src/projects/Senjanis/senjanis.png",
+        "assets/src/projects/Senjanis/senjanis.png"
+      ],
+      "techStack": ["Laravel", "Flutter", "MySQL", "Git", "Figma", "Postman"],
+      "features": [
+        "User authentication and account management",
+        "Seamless integration between web and mobile systems",
+        "CRUD functionality (create, read, update, delete)",
+        "Responsive and user-friendly interface",
+        "Comprehensive technical documentation for project sustainability"
+      ],
+      "demoUrl": "https://demo-ecommerce.example.com",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/SENJANIS.git",
+      "status": "Completed",
+      "category": "Web Development",
+      "startDate": "2023-03-15",
+      "endDate": "2023-05-20",
+      "isFeatured": true
+    },
+    {
+      "id": "3",
+      "title": "Image Captioning & Sentiment Analysis (Web & Mobile)",
+      "description": "This project was developed as part of a group assignment in the sixth semester, focusing on combining AI with full-stack development. I contributed by gathering and creating datasets of text and images, training the AI model in Python to generate captions and perform sentiment analysis, and integrating the model into an API using Flask for seamless communication. I also developed two application versions: a mobile app with Flutter and a web app with Laravel, ensuring consistent functionality and user experience across platforms. Through this project, I gained valuable skills in AI integration, cross-platform development, and collaborative teamwork.",
+      "shortDescription": "AI-powered web and mobile app for generating image captions and sentiment analysis",
+      "image": "assets/src/projects/ImageCaptioning/image-captioning.png",
+      "gallery": [
+        "assets/src/projects/ImageCaptioning/image-captioning.png",
+        "assets/src/projects/ImageCaptioning/image-captioning2.png"
+      ],
+      "techStack": [
+        "Python",
+        "Flask",
+        "Flutter",
+        "Laravel",
+        "MySQL",
+        "Git",
+        "Figma"
+      ],
+      "features": [
+        "AI-based image caption generation",
+        "Sentiment analysis from text input",
+        "REST API integration with Flask",
+        "Cross-platform development (Web & Mobile)",
+        "Responsive and consistent user interface"
+      ],
+      "demoUrl": "https://demo-captioning.example.com",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/Image-Captioning-Sentiment-Analysis.git",
+      "status": "Completed",
+      "category": "AI & Fullstack Development",
+      "startDate": "2024-02-01",
+      "endDate": "2024-06-30",
+      "isFeatured": true
+    },
+    {
+      "id": "4",
+      "title": "Info.go.id – PPID Mobile Application Development",
+      "description": "This project was developed during my internship at Sangkuriang as part of the PPID mobile application initiative. My role focused on converting Figma UI designs into a fully functional mobile application using Flutter, incorporating Bloc state management to ensure smooth performance and maintainable architecture. I also implemented secure login functionality with Recaptcha, strengthening the application’s authentication system. Additionally, I handled API integration between web and mobile platforms to enable seamless connectivity and data synchronization. Through this project, I enhanced my expertise in mobile development, secure authentication, responsive UI design, and effective state management.",
+      "shortDescription": "Mobile application for PPID Info.go.id with secure login and Bloc state management",
+      "image": "assets/src/projects/InfoGoId/info-goid.png",
+      "gallery": [
+        "assets/src/projects/InfoGoId/info-goid.png",
+        "assets/src/projects/InfoGoId/info-goid2.png"
+      ],
+      "techStack": [
+        "Flutter",
+        "Bloc",
+        "Dart",
+        "API Integration",
+        "Figma",
+        "Git"
+      ],
+      "features": [
+        "Conversion of Figma UI designs into Flutter-based mobile interface",
+        "State management using Bloc for smooth performance",
+        "Secure login with Recaptcha",
+        "API integration between web and mobile platforms",
+        "Responsive and user-friendly design"
+      ],
+      "demoUrl": "https://demo-infogoid.example.com",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/InfoGoId-PPID-App.git",
+      "status": "Completed",
+      "category": "Mobile Development",
+      "startDate": "2024-08-01",
+      "endDate": "2024-11-30",
+      "isFeatured": true
+    },
+    {
+      "id": "5",
+      "title": "Portal Nasional Mobile App Maintenance",
+      "description": "This project was carried out during my internship at Sangkuriang, where I served as a Maintainer for the Portal Nasional mobile application built with React Native. My responsibilities included addressing issues caused by a dead API by replacing non-functional endpoints with dummy data to ensure the app continued running smoothly. I also conducted performance analysis, identified bottlenecks, and applied effective solutions to maintain a seamless user experience. Through this role, I gained practical experience in mobile application troubleshooting, live maintenance, and enhanced my skills in React Native development.",
+      "shortDescription": "Maintenance of Portal Nasional mobile app built with React Native, focusing on troubleshooting and performance improvements",
+      "image": "assets/src/projects/PortalNasional/portal-nasional.png",
+      "gallery": [
+        "assets/src/projects/PortalNasional/portal-nasional.png",
+        "assets/src/projects/PortalNasional/portal-nasional2.png"
+      ],
+      "techStack": ["React Native", "JavaScript", "API Integration", "Git"],
+      "features": [
+        "Maintained and updated Portal Nasional mobile application",
+        "Replaced dead API endpoints with dummy data",
+        "Conducted performance analysis and applied fixes",
+        "Troubleshooting and live maintenance",
+        "Enhanced reliability and user experience"
+      ],
+      "demoUrl": "https://demo-portalnasional.example.com",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/Portal-Nasional-Maintenance.git",
+      "status": "Completed",
+      "category": "Mobile Development",
+      "startDate": "2024-11-01",
+      "endDate": "2024-11-30",
       "isFeatured": true
     }
   ],
