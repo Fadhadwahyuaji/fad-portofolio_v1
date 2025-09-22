@@ -14,11 +14,12 @@
   <body>
     <nav class="navbar">
       <div class="nav-container">
-        <div class="nav-logo">
+        <a class="nav-logo" href="/">
           <span>Portfolio</span>
-        </div>
+        </a>
         <div class="nav-links">
           <a href="#home">Home</a>
+          <a href="#education">Education</a>
           <a href="#experience">Experience</a>
           <a href="#portfolio">Portfolio</a>
           <a href="#contact">Contact</a>
@@ -108,34 +109,109 @@
       </div>
     </section>
 
-    <!-- ...existing code... -->
+    <!-- Education Section -->
+    <section id="education" class="section education-section">
+      <div class="education-container">
+        <div class="section-header">
+          <h2 class="section-title">Education</h2>
+          <p class="section-subtitle">Academic background</p>
+        </div>
 
-    <!-- Experience Section - Tambahkan setelah hero section dan sebelum portfolio -->
+        <div class="education-list">
+          <article class="education-item">
+            <img
+              src="assets/src/company-logos/polindra.jpeg"
+              alt="Politeknik Negeri Indramayu"
+              class="edu-logo"
+            />
+
+            <div class="edu-details">
+              <h3 class="edu-degree">Diploma IV — Software Engineering</h3>
+              <p class="edu-institution">Politeknik Negeri Indramayu</p>
+
+              <div class="edu-meta">
+                <span class="edu-duration">2021 — 2025</span>
+                <!-- <span class="edu-sep">•</span> -->
+                <!-- <span>Cirebon, Indonesia</span> -->
+              </div>
+
+              <!-- <div class="edu-tags">
+                <span class="edu-badge">GPA 3.7/4.0</span>
+                <span class="edu-badge outline">Expected Graduate</span>
+              </div> -->
+
+              <!-- <ul class="edu-highlights">
+                <li>MBKM Independent Study — Software Developer Program</li>
+                <li>Winner of Programming Contest 2023 (1st Place)</li>
+                <li>
+                  Final Project: AI-powered web application with machine
+                  learning integration
+                </li>
+                <li>
+                  Active member of Software Engineering Student Association
+                </li>
+              </ul> -->
+            </div>
+
+            <div class="edu-stats">
+              <div class="stats-card">
+                <span class="stat-number">3.7</span>
+                <span class="stat-label">GPA</span>
+              </div>
+
+              <!-- <div class="achievement-badge">🏆 Programming Contest Winner</div> -->
+
+              <!-- <div class="skills-preview">
+                <h4>Key Skills Developed</h4>
+                <div class="skills-list">
+                  <div class="skill-item">
+                    <span class="skill-name">Software Development</span>
+                    <span class="skill-level">Expert</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Database Design</span>
+                    <span class="skill-level">Advanced</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">System Analysis</span>
+                    <span class="skill-level">Advanced</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-name">Project Management</span>
+                    <span class="skill-level">Intermediate</span>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
     <section id="experience" class="section experience-section">
       <div class="experience-container">
         <div class="section-header">
-          <h2 class="section-title">Professional Experience</h2>
+          <h2 class="section-title">Experience</h2>
           <p class="section-subtitle">My journey in the tech industry</p>
         </div>
 
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-marker">
-              <div class="marker-icon">💼</div>
-            </div>
+            <div class="timeline-marker"></div>
             <div class="timeline-content">
               <div class="experience-card">
                 <div class="company-header">
                   <div class="company-logo">
                     <img
-                      src="assets/src/company-logos/company1.png"
+                      src="assets/src/company-logos/sankuriang.png"
                       alt="Company Logo"
                     />
                   </div>
                   <div class="company-info">
-                    <h3 class="position-title">Frontend Developer</h3>
-                    <p class="company-name">Tech Company Name</p>
-                    <span class="duration">Jan 2024 - Present</span>
+                    <h3 class="position-title">Programmer</h3>
+                    <p class="company-name">PT SANGKURIANG INTERNASIONAL</p>
+                    <span class="duration">Jul 2024 - Des 2024</span>
                   </div>
                   <div class="employment-type">
                     <span class="type-badge internship">Internship</span>
@@ -144,9 +220,13 @@
 
                 <div class="job-description">
                   <p>
-                    Developed and maintained responsive web applications using
-                    React and modern JavaScript frameworks. Collaborated with
-                    design team to implement pixel-perfect UI components.
+                    During my internship as a Programmer, I contributed to the
+                    development of mobile applications using Flutter and React
+                    Native, API integration, and backend development with Golang
+                    and PostgreSQL. I was also involved in system monitoring,
+                    documentation writing, and gained valuable insights into
+                    business workflows and project management for large-scale
+                    application development.
                   </p>
                 </div>
 
@@ -154,12 +234,26 @@
                   <h4>Key Achievements:</h4>
                   <ul>
                     <li>
-                      Improved application performance by 40% through code
-                      optimization
+                      Developed a mobile application using Flutter with Bloc
+                      state management based on Figma UI designs for the Mobile
+                      Info.go.id project.
                     </li>
-                    <li>Led the migration from vanilla CSS to Tailwind CSS</li>
                     <li>
-                      Mentored 2 junior developers in modern React practices
+                      Integrated APIs and built authentication features in
+                      Flutter applications.
+                    </li>
+                    <li>
+                      Learned and developed APIs using Golang integrated with
+                      PostgreSQL.
+                    </li>
+                    <li>Implemented system monitoring using Uptime Kuma.</li>
+                    <li>
+                      Authored the User Manual for SP4N LAPOR! (Android &
+                      Website).
+                    </li>
+                    <li>
+                      Gained deeper understanding of business workflows and
+                      project management in mobile application development.
                     </li>
                   </ul>
                 </div>
@@ -167,9 +261,13 @@
                 <div class="tech-stack-used">
                   <h4>Technologies Used:</h4>
                   <div class="tech-chips">
-                    <span class="tech-chip">React</span>
-                    <span class="tech-chip">JavaScript</span>
-                    <span class="tech-chip">Tailwind CSS</span>
+                    <span class="tech-chip">Flutter</span>
+                    <span class="tech-chip">React Native</span>
+                    <span class="tech-chip">Golang</span>
+                    <span class="tech-chip">PostgreSQL</span>
+                    <span class="tech-chip">Uptime Kuma</span>
+                    <span class="tech-chip">Figma</span>
+                    <span class="tech-chip">User Manual</span>
                     <span class="tech-chip">Git</span>
                   </div>
                 </div>
@@ -178,83 +276,88 @@
           </div>
 
           <div class="timeline-item">
-            <div class="timeline-marker">
-              <div class="marker-icon">🎓</div>
-            </div>
+            <div class="timeline-marker"></div>
             <div class="timeline-content">
               <div class="experience-card">
                 <div class="company-header">
                   <div class="company-logo">
                     <img
-                      src="assets/src/company-logos/company2.png"
+                      src="assets/src/company-logos/polindra.jpeg"
                       alt="University Logo"
                     />
                   </div>
                   <div class="company-info">
-                    <h3 class="position-title">Software Engineering Student</h3>
-                    <p class="company-name">University Name</p>
-                    <span class="duration">2020 - 2024</span>
+                    <h3 class="position-title">
+                      MBKM Independent Internal Campus – Software Developer
+                    </h3>
+                    <p class="company-name">Politeknik Negeri Indramayu</p>
+                    <span class="duration">2021 - 2025</span>
                   </div>
                   <div class="employment-type">
-                    <span class="type-badge education">Education</span>
+                    <span class="type-badge internship">Internship</span>
                   </div>
                 </div>
 
                 <div class="job-description">
                   <p>
-                    Focused on software development, algorithms, and modern web
-                    technologies. Completed various projects in web development,
-                    mobile apps, and AI/ML.
+                    As part of the Independent MBKM program, I worked as a
+                    Software Developer to design and develop a web-based
+                    Employee Information System for Politeknik Negeri Indramayu.
+                    The program aimed to provide students with off-campus
+                    experience, enhancing technical, collaborative, and project
+                    management skills for future career preparation.
                   </p>
                 </div>
 
                 <div class="achievements">
-                  <h4>Academic Highlights:</h4>
+                  <h4>Key Achievements:</h4>
                   <ul>
-                    <li>GPA: 3.8/4.0 - Cum Laude</li>
-                    <li>Winner of Programming Contest 2023</li>
-                    <li>Final project: AI-powered web application</li>
+                    <li>
+                      Successfully developed a web-based Employee Information
+                      System for Politeknik Negeri Indramayu
+                    </li>
+                    <li>
+                      Collaborated with the development team to analyze system
+                      requirements and translate user needs into functional
+                      solutions.
+                    </li>
+                    <li>
+                      Communicated requirements and project progress effectively
+                      with stakeholders.
+                    </li>
+                    <li>
+                      Prepared and managed all project documentation, ensuring
+                      proper delivery to the supervisor.
+                    </li>
                   </ul>
                 </div>
 
                 <div class="tech-stack-used">
                   <h4>Skills Developed:</h4>
                   <div class="tech-chips">
-                    <span class="tech-chip">Java</span>
-                    <span class="tech-chip">Python</span>
+                    <span class="tech-chip">HTML</span>
+                    <span class="tech-chip">CSS</span>
+                    <span class="tech-chip">JavaScript</span>
+                    <span class="tech-chip">PHP</span>
+                    <span class="tech-chip">Laravel</span>
                     <span class="tech-chip">MySQL</span>
-                    <span class="tech-chip">React</span>
+                    <span class="tech-chip">Flutter</span>
+                    <span class="tech-chip">Figma</span>
+                    <span class="tech-chip">Postman</span>
+                    <span class="tech-chip">Documentation</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Tambahkan timeline-item lain sesuai kebutuhan -->
         </div>
       </div>
     </section>
 
-    <!-- ...existing code... -->
-
-    <!-- <section id="about" class="section hero-section">
-      <div class="container">
-        <h1>About Me</h1>
-        <p>Learn more about my journey and passion</p>
-      </div>
-    </section> -->
-
-    <!-- <section id="skills" class="section">
-      <div class="container">
-        <h1>Experience</h1>
-        <p>My professional skills and expertise</p>
-      </div>
-    </section> -->
-
     <section id="portfolio" class="section portfolio">
-      <div class="container">
-        <h1 class="portfolio-title">Portfolio</h1>
-        <p class="portfolio-subtitle">Showcase of my latest projects</p>
+      <div class="section-header">
+        <h1 class="section-title">Portfolio</h1>
+        <p class="section-subtitle">Showcase of my latest projects</p>
       </div>
 
       <!-- Tabs -->
@@ -367,9 +470,9 @@
 
     <section id="contact" class="section contact-section">
       <div class="contact-container">
-        <div class="contact-header">
-          <h1 class="contact-title">Get In Touch</h1>
-          <p class="contact-subtitle">
+        <div class="section-header">
+          <h1 class="section-title">Get In Touch</h1>
+          <p class="section-subtitle">
             Let's connect and work together on amazing projects
           </p>
         </div>
