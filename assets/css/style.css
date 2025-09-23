@@ -2214,6 +2214,7 @@ body.modal-open {
 }
 
 /* Education (improved layout) */
+/* Education (improved layout) - Enhanced Responsive */
 .education-section {
   position: relative;
 }
@@ -2225,7 +2226,7 @@ body.modal-open {
 .education-list {
   margin: 0 auto;
   display: grid;
-  gap: 1.5rem;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .education-item {
@@ -2233,7 +2234,7 @@ body.modal-open {
   grid-template-columns: auto 1fr auto;
   gap: clamp(1rem, 2.5vw, 1.5rem);
   align-items: start;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.2rem, 3vw, 2rem);
   border-radius: 20px;
   background: linear-gradient(
       180deg,
@@ -2276,8 +2277,8 @@ body.modal-open {
 }
 
 .edu-logo {
-  width: clamp(64px, 8vw, 80px);
-  height: clamp(64px, 8vw, 80px);
+  width: clamp(56px, 8vw, 80px);
+  height: clamp(56px, 8vw, 80px);
   border-radius: 16px;
   object-fit: cover;
   flex-shrink: 0;
@@ -2299,17 +2300,17 @@ body.modal-open {
 
 .edu-degree {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.3;
 }
 
 .edu-institution {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
   color: var(--primary-color);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   line-height: 1.2;
 }
 
@@ -2317,7 +2318,7 @@ body.modal-open {
   display: flex;
   gap: 0.75rem;
   align-items: center;
-  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
   color: var(--text-muted);
   margin-bottom: 1rem;
   flex-wrap: wrap;
@@ -2333,14 +2334,14 @@ body.modal-open {
 
 .edu-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
 
 .edu-badge {
-  font-size: clamp(0.75rem, 1vw, 0.85rem);
-  padding: 0.4rem 0.8rem;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  padding: clamp(0.3rem, 0.8vw, 0.4rem) clamp(0.6rem, 1.2vw, 0.8rem);
   border-radius: 20px;
   background: rgba(0, 255, 136, 0.15);
   color: var(--primary-color);
@@ -2366,14 +2367,14 @@ body.modal-open {
   display: grid;
   gap: 0.5rem;
   color: var(--text-secondary);
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
 }
 
 .edu-highlights li {
   list-style: none;
   position: relative;
   padding-left: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: justify;
 }
 
@@ -2391,15 +2392,15 @@ body.modal-open {
 .edu-stats {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  min-width: clamp(180px, 20vw, 220px);
+  gap: 0.8rem;
+  min-width: clamp(160px, 18vw, 200px);
 }
 
 .stats-card {
   background: var(--bg-glass);
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: 14px;
+  padding: clamp(0.8rem, 1.8vw, 1.2rem);
   backdrop-filter: blur(10px);
   text-align: center;
   transition: all 0.3s ease;
@@ -2412,7 +2413,7 @@ body.modal-open {
 }
 
 .stat-number {
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   color: var(--primary-color);
   display: block;
@@ -2420,10 +2421,10 @@ body.modal-open {
 }
 
 .stat-label {
-  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
   color: var(--text-muted);
   font-weight: 500;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .achievement-badge {
@@ -2434,38 +2435,39 @@ body.modal-open {
   );
   color: #000;
   border-radius: 12px;
-  padding: clamp(0.75rem, 1.5vw, 1rem);
-  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+  padding: clamp(0.6rem, 1.5vw, 0.9rem);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
   font-weight: 600;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  line-height: 1.2;
 }
 
 .skills-preview {
   background: var(--bg-glass);
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: 14px;
+  padding: clamp(0.8rem, 1.8vw, 1.2rem);
   backdrop-filter: blur(10px);
 }
 
 .skills-preview h4 {
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
   font-weight: 600;
 }
 
 .skills-list {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .skill-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: clamp(0.8rem, 1vw, 0.85rem);
+  font-size: clamp(0.75rem, 0.95vw, 0.8rem);
 }
 
 .skill-name {
@@ -2478,52 +2480,254 @@ body.modal-open {
   font-weight: 600;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
   .education-item {
     grid-template-columns: auto 1fr;
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   .edu-stats {
     grid-column: 1 / -1;
     flex-direction: row;
     min-width: auto;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
+    gap: 1rem;
   }
 
-  .stats-card {
+  .stats-card,
+  .achievement-badge,
+  .skills-preview {
     flex: 1;
+    min-width: 0;
   }
 }
 
 @media (max-width: 768px) {
   .education-item {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
   }
 
   .edu-logo {
     justify-self: center;
+    width: clamp(64px, 12vw, 72px);
+    height: clamp(64px, 12vw, 72px);
   }
 
   .edu-details {
     text-align: center;
+    order: 2;
+  }
+
+  .edu-degree {
+    font-size: clamp(1.2rem, 4vw, 1.4rem);
+  }
+
+  .edu-institution {
+    font-size: clamp(1rem, 3vw, 1.1rem);
+  }
+
+  .edu-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+
+  .edu-tags {
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .edu-highlights {
     text-align: left;
+    margin-top: 1rem;
   }
 
   .edu-stats {
+    order: 3;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .skills-preview {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .education-item {
+    padding: 1.2rem;
+  }
+
+  .edu-degree {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-institution {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-meta {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .edu-tags {
+    gap: 0.4rem;
+  }
+
+  .edu-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .edu-highlights {
+    font-size: 0.85rem;
+    gap: 0.4rem;
+  }
+
+  .edu-stats {
+    gap: 0.6rem;
+  }
+
+  .stats-card,
+  .achievement-badge {
+    padding: 0.8rem;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .achievement-badge {
+    font-size: 0.7rem;
+    padding: 0.6rem;
+  }
+
+  .skills-preview {
+    padding: 0.8rem;
+  }
+
+  .skills-preview h4 {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-item {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
+  .education-item {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .edu-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .edu-degree {
+    font-size: 1.1rem;
+  }
+
+  .edu-institution {
+    font-size: 0.9rem;
+  }
+
+  .edu-meta {
+    font-size: 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .edu-highlights {
+    font-size: 0.8rem;
+  }
+
   .edu-stats {
     grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .stats-card,
+  .achievement-badge,
+  .skills-preview {
+    padding: 0.9rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .achievement-badge {
+    font-size: 0.75rem;
+  }
+
+  .skills-preview h4 {
+    font-size: 0.85rem;
+  }
+
+  .skill-item {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .education-item {
+    padding: 0.8rem;
+  }
+
+  .edu-degree {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .edu-institution {
+    font-size: 0.85rem;
+  }
+
+  .edu-meta {
+    font-size: 0.7rem;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .edu-sep {
+    display: none;
+  }
+
+  .edu-tags {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .edu-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .edu-highlights {
+    font-size: 0.75rem;
+    padding-left: 0.5rem;
+  }
+
+  .edu-highlights li {
+    padding-left: 1rem;
   }
 }
