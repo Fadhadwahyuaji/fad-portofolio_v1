@@ -1,6 +1,9 @@
 let projectData = null;
 let allProjects = [];
 
+let currentImageIndex = 0;
+let galleryImages = [];
+
 // Get project ID from URL
 function getProjectIdFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -103,6 +106,9 @@ function populateGallery() {
       ? projectData.gallery
       : [projectData.image];
 
+  // Store gallery images for modal navigation
+  galleryImages = gallery;
+
   const thumbnailsContainer = document.getElementById("gallery-thumbnails");
   thumbnailsContainer.innerHTML = "";
 
@@ -110,21 +116,190 @@ function populateGallery() {
     const thumbnail = document.createElement("div");
     thumbnail.className = `thumbnail ${index === 0 ? "active" : ""}`;
     thumbnail.dataset.src = imageSrc;
+    thumbnail.dataset.index = index;
     thumbnail.innerHTML = `<img src="${imageSrc}" alt="${
       projectData.title
     } - Image ${index + 1}" loading="lazy">`;
 
     thumbnail.addEventListener("click", () =>
-      switchMainImage(imageSrc, thumbnail)
+      switchMainImage(imageSrc, thumbnail, index)
     );
     thumbnailsContainer.appendChild(thumbnail);
   });
+
+  // Add scroll management for many thumbnails
+  if (gallery.length > 6) {
+    addThumbnailScrollManagement(thumbnailsContainer);
+  }
 }
 
-// Switch main image
-function switchMainImage(src, clickedThumbnail) {
+function addThumbnailScrollManagement(container) {
+  let isScrolling = false;
+
+  // Add smooth scroll behavior
+  container.style.scrollBehavior = "smooth";
+
+  // Auto-scroll to active thumbnail when changed
+  const scrollToActiveThumbnail = () => {
+    const activeThumbnail = container.querySelector(".thumbnail.active");
+    if (activeThumbnail && !isScrolling) {
+      isScrolling = true;
+
+      const containerRect = container.getBoundingClientRect();
+      const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+      // Check if thumbnail is not fully visible
+      if (
+        thumbnailRect.left < containerRect.left ||
+        thumbnailRect.right > containerRect.right
+      ) {
+        const scrollLeft =
+          activeThumbnail.offsetLeft -
+          container.offsetWidth / 2 +
+          activeThumbnail.offsetWidth / 2;
+
+        container.scrollTo({
+          left: Math.max(0, scrollLeft),
+          behavior: "smooth",
+        });
+      }
+
+      setTimeout(() => {
+        isScrolling = false;
+      }, 300);
+    }
+  };
+
+  // Add mutation observer to watch for active thumbnail changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        if (mutation.target.classList.contains("active")) {
+          setTimeout(scrollToActiveThumbnail, 100);
+        }
+      }
+    });
+  });
+
+  // Observe all thumbnails
+  container.querySelectorAll(".thumbnail").forEach((thumbnail) => {
+    observer.observe(thumbnail, { attributes: true });
+  });
+
+  // Add scroll indicators if needed
+  if (container.scrollWidth > container.clientWidth) {
+    addScrollIndicators(container);
+  }
+}
+
+// Add visual scroll indicators
+function addScrollIndicators(container) {
+  const gallery = container.parentElement;
+
+  // Create scroll indicators
+  const leftIndicator = document.createElement("div");
+  leftIndicator.className = "scroll-indicator scroll-indicator-left";
+  leftIndicator.innerHTML = "‹";
+
+  const rightIndicator = document.createElement("div");
+  rightIndicator.className = "scroll-indicator scroll-indicator-right";
+  rightIndicator.innerHTML = "›";
+
+  // Add indicator styles
+  const indicatorStyles = `
+    .scroll-indicator {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 10;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      pointer-events: auto;
+    }
+    
+    .scroll-indicator:hover {
+      opacity: 1;
+      background: rgba(0, 255, 136, 0.8);
+    }
+    
+    .scroll-indicator-left {
+      left: -12px;
+    }
+    
+    .scroll-indicator-right {
+      right: -12px;
+    }
+    
+    .project-gallery {
+      position: relative;
+    }
+    
+    @media (max-width: 768px) {
+      .scroll-indicator {
+        display: none;
+      }
+    }
+  `;
+
+  // Add styles to head if not already added
+  if (!document.getElementById("thumbnail-scroll-styles")) {
+    const styleSheet = document.createElement("style");
+    styleSheet.id = "thumbnail-scroll-styles";
+    styleSheet.textContent = indicatorStyles;
+    document.head.appendChild(styleSheet);
+  }
+
+  // Insert indicators
+  gallery.style.position = "relative";
+  gallery.appendChild(leftIndicator);
+  gallery.appendChild(rightIndicator);
+
+  // Add scroll functionality
+  leftIndicator.addEventListener("click", () => {
+    container.scrollBy({ left: -150, behavior: "smooth" });
+  });
+
+  rightIndicator.addEventListener("click", () => {
+    container.scrollBy({ left: 150, behavior: "smooth" });
+  });
+
+  // Update indicator visibility based on scroll position
+  const updateIndicators = () => {
+    const canScrollLeft = container.scrollLeft > 0;
+    const canScrollRight =
+      container.scrollLeft < container.scrollWidth - container.clientWidth;
+
+    leftIndicator.style.opacity = canScrollLeft ? "0.7" : "0.3";
+    rightIndicator.style.opacity = canScrollRight ? "0.7" : "0.3";
+    leftIndicator.style.pointerEvents = canScrollLeft ? "auto" : "none";
+    rightIndicator.style.pointerEvents = canScrollRight ? "auto" : "none";
+  };
+
+  container.addEventListener("scroll", updateIndicators);
+  updateIndicators(); // Initial call
+}
+
+// Switch main image - Enhanced
+function switchMainImage(src, clickedThumbnail, index) {
   const mainImage = document.getElementById("main-project-image");
   mainImage.src = src;
+
+  // Update current index
+  currentImageIndex = index;
 
   // Update active thumbnail
   document
@@ -201,14 +376,73 @@ function initImageZoom() {
   const zoomOverlay = document.getElementById("image-zoom-overlay");
   const zoomImage = document.getElementById("zoom-image");
   const zoomClose = document.getElementById("zoom-close");
+  const zoomPrev = document.getElementById("zoom-prev");
+  const zoomNext = document.getElementById("zoom-next");
+  const zoomCounter = document.getElementById("zoom-counter");
 
+  // Open zoom modal
   mainImageContainer.addEventListener("click", () => {
     const mainImage = document.getElementById("main-project-image");
-    zoomImage.src = mainImage.src;
-    zoomImage.alt = mainImage.alt;
+    currentImageIndex = parseInt(
+      document.querySelector(".thumbnail.active")?.dataset.index || 0
+    );
+    openZoomModal(currentImageIndex);
+  });
+
+  // Navigation functions
+  function openZoomModal(index) {
+    currentImageIndex = index;
+    updateZoomImage();
+    updateZoomControls();
     zoomOverlay.classList.add("active");
     document.body.classList.add("modal-open");
-  });
+  }
+
+  function updateZoomImage() {
+    if (galleryImages[currentImageIndex]) {
+      zoomImage.src = galleryImages[currentImageIndex];
+      zoomImage.alt = `${projectData.title} - Image ${currentImageIndex + 1}`;
+
+      // Update counter
+      zoomCounter.textContent = `${currentImageIndex + 1} / ${
+        galleryImages.length
+      }`;
+
+      // Update main image and thumbnail
+      const mainImage = document.getElementById("main-project-image");
+      mainImage.src = galleryImages[currentImageIndex];
+
+      // Update active thumbnail
+      document.querySelectorAll(".thumbnail").forEach((thumb, index) => {
+        thumb.classList.toggle("active", index === currentImageIndex);
+      });
+    }
+  }
+
+  function updateZoomControls() {
+    // Update navigation buttons state
+    zoomPrev.classList.toggle("disabled", currentImageIndex === 0);
+    zoomNext.classList.toggle(
+      "disabled",
+      currentImageIndex === galleryImages.length - 1
+    );
+
+    // Hide navigation if only one image
+    const showNav = galleryImages.length > 1;
+    zoomPrev.style.display = showNav ? "flex" : "none";
+    zoomNext.style.display = showNav ? "flex" : "none";
+    zoomCounter.style.display = showNav ? "block" : "none";
+  }
+
+  function navigateImage(direction) {
+    const newIndex = currentImageIndex + direction;
+
+    if (newIndex >= 0 && newIndex < galleryImages.length) {
+      currentImageIndex = newIndex;
+      updateZoomImage();
+      updateZoomControls();
+    }
+  }
 
   // Close zoom
   const closeZoom = () => {
@@ -217,17 +451,73 @@ function initImageZoom() {
     zoomImage.src = "";
   };
 
+  // Event listeners
   zoomClose.addEventListener("click", closeZoom);
+
+  zoomPrev.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navigateImage(-1);
+  });
+
+  zoomNext.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navigateImage(1);
+  });
+
   zoomOverlay.addEventListener("click", (e) => {
     if (e.target === zoomOverlay) closeZoom();
   });
 
-  // ESC key to close
+  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && zoomOverlay.classList.contains("active")) {
-      closeZoom();
+    if (!zoomOverlay.classList.contains("active")) return;
+
+    switch (e.key) {
+      case "Escape":
+        closeZoom();
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        navigateImage(-1);
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        navigateImage(1);
+        break;
+      case " ": // Spacebar
+        e.preventDefault();
+        navigateImage(1);
+        break;
     }
   });
+
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  zoomOverlay.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  zoomOverlay.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swipe right - previous image
+        navigateImage(-1);
+      } else {
+        // Swipe left - next image
+        navigateImage(1);
+      }
+    }
+  }
 }
 
 // Initialize back to top

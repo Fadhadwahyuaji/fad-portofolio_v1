@@ -13,6 +13,120 @@
     },
     "techStack": ["Laravel", "Flutter", "Python", "Golang", "PostgreSQL"]
   },
+  "education": [
+    {
+      "id": "1",
+      "degree": "Diploma IV — Software Engineering",
+      "institution": "Politeknik Negeri Indramayu",
+      "location": "Indramayu, West Java",
+      "startDate": "2021",
+      "endDate": "2025",
+      "duration": "2021 — 2025",
+      "gpa": "3.7",
+      "logo": "assets/src/company-logos/polindra.jpeg",
+      "status": "Graduated",
+      "achievements": [
+        "Graduated with GPA 3.7/4.0",
+        "Completed final thesis on AI-powered Image Captioning System",
+        "Participated in MBKM Independent Internal Campus program",
+        "Developed multiple web and mobile applications as part of coursework"
+      ],
+      "relevantCourses": [
+        "Web Development",
+        "Mobile Application Development",
+        "Database Management",
+        "Software Engineering",
+        "Artificial Intelligence",
+        "Data Structures & Algorithms"
+      ],
+      "skills": [
+        "Laravel",
+        "Flutter",
+        "Python",
+        "MySQL",
+        "Git",
+        "Software Engineering"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "id": "1",
+      "position": "Programmer",
+      "company": "PT SANGKURIANG INTERNASIONAL",
+      "location": "Jakarta, Indonesia",
+      "startDate": "2024-07-01",
+      "endDate": "2024-12-01",
+      "duration": "Jul 2024 - Des 2024",
+      "type": "Internship",
+      "logo": "assets/src/company-logos/sankuriang.png",
+      "description": "During my internship as a Programmer, I contributed to the development of mobile applications using Flutter and React Native, API integration, and backend development with Golang and PostgreSQL. I was also involved in system monitoring, documentation writing, and gained valuable insights into business workflows and project management for large-scale application development.",
+      "achievements": [
+        "Developed a mobile application using Flutter with Bloc state management based on Figma UI designs for the Mobile Info.go.id project",
+        "Integrated APIs and built authentication features in Flutter applications",
+        "Learned and developed APIs using Golang integrated with PostgreSQL",
+        "Implemented system monitoring using Uptime Kuma",
+        "Authored the User Manual for SP4N LAPOR! (Android & Website)",
+        "Gained deeper understanding of business workflows and project management in mobile application development"
+      ],
+      "techStack": [
+        "Flutter",
+        "React Native",
+        "Golang",
+        "PostgreSQL",
+        "Uptime Kuma",
+        "Figma",
+        "User Manual",
+        "Git"
+      ],
+      "projects": [
+        {
+          "name": "Info.go.id Mobile App",
+          "description": "Mobile application with Bloc state management and secure authentication"
+        },
+        {
+          "name": "Portal Nasional Maintenance",
+          "description": "Maintenance and performance optimization of React Native app"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "position": "MBKM Independent Internal Campus – Software Developer",
+      "company": "Politeknik Negeri Indramayu",
+      "location": "Indramayu, West Java",
+      "startDate": "2023-02-01",
+      "endDate": "2023-06-30",
+      "duration": "Feb 2023 - Jun 2023",
+      "type": "Internship",
+      "logo": "assets/src/company-logos/polindra.jpeg",
+      "description": "As part of the Independent MBKM program, I worked as a Software Developer to design and develop a web-based Employee Information System for Politeknik Negeri Indramayu. The program aimed to provide students with off-campus experience, enhancing technical, collaborative, and project management skills for future career preparation.",
+      "achievements": [
+        "Successfully developed a web-based Employee Information System for Politeknik Negeri Indramayu",
+        "Collaborated with the development team to analyze system requirements and translate user needs into functional solutions",
+        "Communicated requirements and project progress effectively with stakeholders",
+        "Prepared and managed all project documentation, ensuring proper delivery to the supervisor"
+      ],
+      "techStack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP",
+        "Laravel",
+        "MySQL",
+        "Flutter",
+        "Figma",
+        "Postman",
+        "Documentation"
+      ],
+      "projects": [
+        {
+          "name": "Employee Information System",
+          "description": "Web-based system for managing employee data and information"
+        }
+      ]
+    }
+  ],
   "projects": [
     {
       "id": "1",
@@ -33,7 +147,7 @@
         "Admin Dashboard: Manage products, orders, and customer data",
         "Customer Dashboard: Track orders and view transaction history"
       ],
-      "demoUrl": "https://demo-ecommerce.example.com",
+      "demoUrl": "",
       "githubUrl": "https://github.com/Fadhadwahyuaji/SENJANIS.git",
       "status": "Completed",
       "category": "Web Development",
@@ -46,11 +160,8 @@
       "title": "Employee Management Information System Development ",
       "description": "This project began with research to align user needs and technical feasibility. I first contributed as a Mobile Programmer, designing the UI and integrating the mobile app with the web system, before shifting fully to web development with Laravel to build core features and ensure a responsive experience. Throughout the process, I gained hands-on experience in cross-platform development, problem-solving, teamwork, and the complete software development lifecycle, from planning to documentation.",
       "shortDescription": "Full-stack e-commerce platform dengan fitur shopping cart dan payment gateway",
-      "image": "assets/src/projects/Senjanis/senjanis.png",
-      "gallery": [
-        "assets/src/projects/Senjanis/senjanis.png",
-        "assets/src/projects/Senjanis/senjanis.png"
-      ],
+      "image": "assets/src/projects/proyek2/simpeg.png",
+      "gallery": ["assets/src/projects/proyek2/simpeg.png"],
       "techStack": ["Laravel", "Flutter", "MySQL", "Git", "Figma", "Postman"],
       "features": [
         "User authentication and account management",
@@ -59,8 +170,8 @@
         "Responsive and user-friendly interface",
         "Comprehensive technical documentation for project sustainability"
       ],
-      "demoUrl": "https://demo-ecommerce.example.com",
-      "githubUrl": "https://github.com/Fadhadwahyuaji/SENJANIS.git",
+      "demoUrl": "",
+      "githubUrl": "",
       "status": "Completed",
       "category": "Web Development",
       "startDate": "2023-03-15",
@@ -72,10 +183,13 @@
       "title": "Image Captioning & Sentiment Analysis (Web & Mobile)",
       "description": "This project was developed as part of a group assignment in the sixth semester, focusing on combining AI with full-stack development. I contributed by gathering and creating datasets of text and images, training the AI model in Python to generate captions and perform sentiment analysis, and integrating the model into an API using Flask for seamless communication. I also developed two application versions: a mobile app with Flutter and a web app with Laravel, ensuring consistent functionality and user experience across platforms. Through this project, I gained valuable skills in AI integration, cross-platform development, and collaborative teamwork.",
       "shortDescription": "AI-powered web and mobile app for generating image captions and sentiment analysis",
-      "image": "assets/src/projects/ImageCaptioning/image-captioning.png",
+      "image": "assets/src/projects/proyek3/proyek3_web1.jpg",
       "gallery": [
-        "assets/src/projects/ImageCaptioning/image-captioning.png",
-        "assets/src/projects/ImageCaptioning/image-captioning2.png"
+        "assets/src/projects/proyek3/proyek3_web1.jpg",
+        "assets/src/projects/proyek3/proyek3_web2.png",
+        "assets/src/projects/proyek3/proyek3_mobile.jpg",
+        "assets/src/projects/proyek3/proyek3_mobile2.jpg",
+        "assets/src/projects/proyek3/proyek3_mobile3.jpg"
       ],
       "techStack": [
         "Python",
@@ -93,8 +207,8 @@
         "Cross-platform development (Web & Mobile)",
         "Responsive and consistent user interface"
       ],
-      "demoUrl": "https://demo-captioning.example.com",
-      "githubUrl": "https://github.com/Fadhadwahyuaji/Image-Captioning-Sentiment-Analysis.git",
+      "demoUrl": "",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/Web-ImageCaptioning",
       "status": "Completed",
       "category": "AI & Fullstack Development",
       "startDate": "2024-02-01",
@@ -103,13 +217,60 @@
     },
     {
       "id": "4",
+      "title": "ReactWhatsApp Clone",
+      "description": "A comprehensive React Native mobile application that clones WhatsApp's interface, developed as a learning project to master mobile development skills. Built with React Native 0.70.0 and modern mobile development practices, this application replicates WhatsApp's core features including chat interface, status updates, call history, and community features. The app features a bottom navigation system with four main tabs (Chat, Status, Community, Calls), real-time chat interface using react-native-gifted-chat with custom bubble styling, comprehensive chat list with avatar, contact names, last messages, and timestamps, call history management, and status/updates functionality. Key technical implementations include React Native navigation system, state management for chat data, custom UI components matching WhatsApp's design system, integration with react-native-vector-icons for consistent iconography, and responsive design for both Android and iOS platforms. This project demonstrates mobile development expertise, UI/UX implementation skills, component architecture, and modern React Native development practices.",
+      "shortDescription": "WhatsApp clone mobile application with chat interface, status updates, and call history built with React Native",
+      "image": "assets/src/projects/whatsapp/whatsapp.png",
+      "gallery": [
+        "assets/src/projects/whatsapp/whatsapp.png",
+        "assets/src/projects/whatsapp/whatsapp (1).jpeg",
+        "assets/src/projects/whatsapp/whatsapp (2).jpeg",
+        "assets/src/projects/whatsapp/whatsapp (3).jpeg",
+        "assets/src/projects/whatsapp/whatsapp (4).jpeg",
+        "assets/src/projects/whatsapp/whatsapp (5).jpeg",
+        "assets/src/projects/whatsapp/whatsapp (6).jpeg"
+      ],
+      "techStack": [
+        "React Native 0.70.0",
+        "React 18.1.0",
+        "react-native-vector-icons",
+        "React Navigation",
+        "NPM"
+      ],
+      "features": [
+        "Bottom navigation with 4 main tabs (Chat, Status, Community, Calls)",
+        "Real-time chat interface with custom bubble design",
+        "Chat list with avatar, contact names, and last messages",
+        "Timestamp display for messages and calls",
+        "Archive chat functionality",
+        "Call history with incoming/outgoing indicators",
+        "Status and updates viewing capability",
+        "Community features interface",
+        "WhatsApp-inspired color scheme and design system",
+        "Responsive layout for various screen sizes",
+        "Custom chat background and UI components"
+      ],
+      "demoUrl": null,
+      "githubUrl": "https://github.com/Fadhadwahyuaji/WhatsApp-ReactNative",
+      "status": "Completed",
+      "category": "Mobile Development",
+      "startDate": "2024-08-15",
+      "endDate": "2024-09-25",
+      "isFeatured": true
+    },
+    {
+      "id": "5",
       "title": "Info.go.id – PPID Mobile Application Development",
       "description": "This project was developed during my internship at Sangkuriang as part of the PPID mobile application initiative. My role focused on converting Figma UI designs into a fully functional mobile application using Flutter, incorporating Bloc state management to ensure smooth performance and maintainable architecture. I also implemented secure login functionality with Recaptcha, strengthening the application’s authentication system. Additionally, I handled API integration between web and mobile platforms to enable seamless connectivity and data synchronization. Through this project, I enhanced my expertise in mobile development, secure authentication, responsive UI design, and effective state management.",
       "shortDescription": "Mobile application for PPID Info.go.id with secure login and Bloc state management",
-      "image": "assets/src/projects/InfoGoId/info-goid.png",
+      "image": "assets/src/projects/infogoid/infomobile.png",
       "gallery": [
-        "assets/src/projects/InfoGoId/info-goid.png",
-        "assets/src/projects/InfoGoId/info-goid2.png"
+        "assets/src/projects/infogoid/infomobile.png",
+        "assets/src/projects/infogoid/login.png",
+        "assets/src/projects/infogoid/beranda.png",
+        "assets/src/projects/infogoid/search.png",
+        "assets/src/projects/infogoid/detailkonten.png",
+        "assets/src/projects/infogoid/beforelogin.png"
       ],
       "techStack": [
         "Flutter",
@@ -126,8 +287,8 @@
         "API integration between web and mobile platforms",
         "Responsive and user-friendly design"
       ],
-      "demoUrl": "https://demo-infogoid.example.com",
-      "githubUrl": "https://github.com/Fadhadwahyuaji/InfoGoId-PPID-App.git",
+      "demoUrl": "",
+      "githubUrl": "",
       "status": "Completed",
       "category": "Mobile Development",
       "startDate": "2024-08-01",
@@ -135,14 +296,14 @@
       "isFeatured": true
     },
     {
-      "id": "5",
+      "id": "6",
       "title": "Portal Nasional Mobile App Maintenance",
       "description": "This project was carried out during my internship at Sangkuriang, where I served as a Maintainer for the Portal Nasional mobile application built with React Native. My responsibilities included addressing issues caused by a dead API by replacing non-functional endpoints with dummy data to ensure the app continued running smoothly. I also conducted performance analysis, identified bottlenecks, and applied effective solutions to maintain a seamless user experience. Through this role, I gained practical experience in mobile application troubleshooting, live maintenance, and enhanced my skills in React Native development.",
       "shortDescription": "Maintenance of Portal Nasional mobile app built with React Native, focusing on troubleshooting and performance improvements",
-      "image": "assets/src/projects/PortalNasional/portal-nasional.png",
+      "image": "assets/src/projects/portalnasional/portalnasional.png",
       "gallery": [
-        "assets/src/projects/PortalNasional/portal-nasional.png",
-        "assets/src/projects/PortalNasional/portal-nasional2.png"
+        "assets/src/projects/portalnasional/portalnasional.png",
+        "assets/src/projects/portalnasional/portalnasional2.png"
       ],
       "techStack": ["React Native", "JavaScript", "API Integration", "Git"],
       "features": [
@@ -152,12 +313,106 @@
         "Troubleshooting and live maintenance",
         "Enhanced reliability and user experience"
       ],
-      "demoUrl": "https://demo-portalnasional.example.com",
-      "githubUrl": "https://github.com/Fadhadwahyuaji/Portal-Nasional-Maintenance.git",
+      "demoUrl": "",
+      "githubUrl": "",
       "status": "Completed",
       "category": "Mobile Development",
       "startDate": "2024-11-01",
       "endDate": "2024-11-30",
+      "isFeatured": true
+    },
+    {
+      "id": "7",
+      "title": "Employee Monitor System",
+      "description": "A comprehensive web-based employee monitoring and management system developed during my internship challenge program. Built with Laravel 11.x and modern frontend technologies, this system enables companies to efficiently monitor employee attendance, track daily activities, and manage user roles. The application features a multi-role system (Admin, Management, Employee) with role-based access control, real-time attendance tracking with check-in/out functionality, comprehensive activity logging with proof uploads, and analytics dashboard with data export capabilities. Key technical implementations include SQLite database with Eloquent ORM relationships, responsive UI using Tailwind CSS and Alpine.js, authentication system with Laravel Breeze, and advanced filtering with CSV export functionality. This project demonstrates full-stack development skills, database design, user authentication, and modern web development practices.",
+      "shortDescription": "Multi-role employee monitoring system with attendance tracking, activity logging, and analytics dashboard built with Laravel",
+      "image": "assets/src/projects/employee_monitor/employee_monitor (1).png",
+      "gallery": [
+        "assets/src/projects/employee_monitor/employee_monitor (1).png",
+        "assets/src/projects/employee_monitor/employee_monitor (2).png",
+        "assets/src/projects/employee_monitor/employee_monitor (3).png",
+        "assets/src/projects/employee_monitor/employee_monitor (4).png",
+        "assets/src/projects/employee_monitor/employee_monitor (5).png",
+        "assets/src/projects/employee_monitor/employee_monitor (6).png",
+        "assets/src/projects/employee_monitor/employee_monitor (7).png",
+        "assets/src/projects/employee_monitor/employee_monitor (8).png",
+        "assets/src/projects/employee_monitor/employee_monitor (9).png"
+      ],
+      "techStack": [
+        "Laravel 11.x",
+        "PHP 8.2+",
+        "SQLite",
+        "Tailwind CSS",
+        "Alpine.js",
+        "Vue.js 3",
+        "Bootstrap 5",
+        "Blade Templates",
+        "Eloquent ORM",
+        "Laravel Breeze",
+        "Vite",
+        "Composer",
+        "NPM"
+      ],
+      "features": [
+        "Multi-role authentication system (Admin, Management, Employee)",
+        "Real-time attendance tracking with check-in/check-out functionality",
+        "Employee activity logging with proof upload capabilities",
+        "Comprehensive user management with role assignment",
+        "Analytics dashboard with attendance statistics and charts",
+        "Data export functionality (CSV format)",
+        "Advanced filtering and search capabilities",
+        "Responsive design for desktop and mobile devices",
+        "Profile management and settings",
+        "Real-time notifications and status updates"
+      ],
+      "demoUrl": "",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/employee-monitor",
+      "status": "Completed",
+      "category": "Full-Stack Development",
+      "startDate": "2024-08-01",
+      "endDate": "2024-09-25",
+      "isFeatured": true
+    },
+    {
+      "id": "8",
+      "title": "Rice Disease Classification with Swin Transformer and LLM Recommendations",
+      "description": "An innovative agricultural technology solution that bridges the gap between rice disease detection and treatment accessibility. Developed as my final thesis project, this AI-powered mobile application helps farmers quickly identify rice plant diseases and receive appropriate treatment recommendations.\n\nThe project combined extensive research in computer vision and natural language processing to create a practical solution for real agricultural challenges. I collaborated directly with farmers and agricultural specialists during the validation phase, ensuring the system meets actual field requirements.\n\nThis end-to-end solution demonstrates how modern AI can create tangible value in traditional industries while emphasizing user-centered design principles.",
+      "shortDescription": "AI-powered agricultural solution combining Swin Transformer image classification (96.72% accuracy) with LLM treatment recommendations for rice disease identification and management.",
+      "image": "assets/src/projects/skripsi/thumbnail.png",
+      "gallery": [
+        "assets/src/projects/skripsi/thumbnail.png",
+        "assets/src/projects/skripsi/padi(1).jpg",
+        "assets/src/projects/skripsi/padi(2).jpg",
+        "assets/src/projects/skripsi/padi(3).jpg",
+        "assets/src/projects/skripsi/padi(4).jpg",
+        "assets/src/projects/skripsi/padi(5).jpg",
+        "assets/src/projects/skripsi/padi(6).jpg",
+        "assets/src/projects/skripsi/padi(7).jpg",
+        "assets/src/projects/skripsi/padi(8).jpg"
+      ],
+      "techStack": [
+        "PyTorch",
+        "HuggingFace Transformers",
+        "timm",
+        "Flutter",
+        "PostgreSQL",
+        "FastAPI",
+        "Docker",
+        "LLM (LLaMA)"
+      ],
+      "features": [
+        "Comparative analysis of 5 deep learning models (ViT, ResNet, EfficientNet, Inception, Swin Transformer)",
+        "Achieved 96.72% accuracy and 96.73% F1-Score with Swin Transformer",
+        "Optimized LLM for agricultural recommendations",
+        "Full-stack system with Flutter frontend, FastAPI backend, PostgreSQL database, and Docker deployment",
+        "Validated by end-users with SUS score of 76.43 (Good)"
+      ],
+      "demoUrl": "",
+      "githubUrl": "https://github.com/Fadhadwahyuaji/PadiCare-IOS",
+      "status": "Completed",
+      "category": "AI & Mobile Development",
+      "startDate": "2025-02-01",
+      "endDate": "2025-06-30",
       "isFeatured": true
     }
   ],
@@ -296,22 +551,118 @@
   "techStack": [
     {
       "id": "1",
-      "name": "HTML5",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-      "category": "Frontend",
-      "level": "Expert",
+      "name": "Laravel",
+      "icon": "assets/src/techstack/Laravel.svg",
+      "category": "Backend",
+      "level": "Advanced",
       "yearsOfExperience": 3
     },
     {
       "id": "2",
-      "name": "CSS3",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-      "category": "Frontend",
-      "level": "Expert",
-      "yearsOfExperience": 3
+      "name": "Flutter",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+      "category": "Mobile",
+      "level": "Advanced",
+      "yearsOfExperience": 2
     },
     {
       "id": "3",
+      "name": "Python",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      "category": "Backend/AI",
+      "level": "Advanced",
+      "yearsOfExperience": 2
+    },
+    {
+      "id": "4",
+      "name": "Golang",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+      "category": "Backend",
+      "level": "Intermediate",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "5",
+      "name": "React Native",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      "category": "Mobile",
+      "level": "Intermediate",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "6",
+      "name": "PostgreSQL",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      "category": "Database",
+      "level": "Advanced",
+      "yearsOfExperience": 2
+    },
+    {
+      "id": "7",
+      "name": "MySQL",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      "category": "Database",
+      "level": "Advanced",
+      "yearsOfExperience": 3
+    },
+    {
+      "id": "8",
+      "name": "FastAPI",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+      "category": "Backend",
+      "level": "Intermediate",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "9",
+      "name": "Flask",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
+      "category": "Backend",
+      "level": "Intermediate",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "10",
+      "name": "Docker",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      "category": "DevOps",
+      "level": "Intermediate",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "11",
+      "name": "PyTorch",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+      "category": "AI/ML",
+      "level": "Advanced",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "12",
+      "name": "Git",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      "category": "Tools",
+      "level": "Advanced",
+      "yearsOfExperience": 3
+    },
+    {
+      "id": "13",
+      "name": "Figma",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+      "category": "Design",
+      "level": "Intermediate",
+      "yearsOfExperience": 2
+    },
+    {
+      "id": "14",
+      "name": "Bloc",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+      "category": "State Management",
+      "level": "Advanced",
+      "yearsOfExperience": 1
+    },
+    {
+      "id": "15",
       "name": "JavaScript",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
       "category": "Frontend",
@@ -319,75 +670,43 @@
       "yearsOfExperience": 2
     },
     {
-      "id": "4",
-      "name": "React.js",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      "id": "16",
+      "name": "HTML5",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
       "category": "Frontend",
       "level": "Advanced",
-      "yearsOfExperience": 2
+      "yearsOfExperience": 3
     },
     {
-      "id": "5",
-      "name": "Node.js",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-      "category": "Backend",
-      "level": "Intermediate",
-      "yearsOfExperience": 1
-    },
-    {
-      "id": "6",
-      "name": "Python",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-      "category": "Backend",
+      "id": "17",
+      "name": "CSS3",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      "category": "Frontend",
       "level": "Advanced",
-      "yearsOfExperience": 2
+      "yearsOfExperience": 3
     },
     {
-      "id": "7",
-      "name": "MongoDB",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-      "category": "Database",
-      "level": "Intermediate",
-      "yearsOfExperience": 1
-    },
-    {
-      "id": "8",
-      "name": "MySQL",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-      "category": "Database",
-      "level": "Intermediate",
-      "yearsOfExperience": 2
-    },
-    {
-      "id": "9",
-      "name": "Git",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      "id": "18",
+      "name": "Postman",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
       "category": "Tools",
-      "level": "Advanced",
+      "level": "Intermediate",
       "yearsOfExperience": 2
     },
     {
-      "id": "10",
-      "name": "Docker",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-      "category": "DevOps",
+      "id": "19",
+      "name": "Uptime Kuma",
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg",
+      "category": "Monitoring",
       "level": "Beginner",
       "yearsOfExperience": 1
     },
     {
-      "id": "11",
-      "name": "AWS",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
-      "category": "Cloud",
+      "id": "20",
+      "name": "Midtrans",
+      "icon": "assets/src/techstack/midtrans.jpeg",
+      "category": "Payment Gateway",
       "level": "Intermediate",
-      "yearsOfExperience": 1
-    },
-    {
-      "id": "12",
-      "name": "TensorFlow",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
-      "category": "AI/ML",
-      "level": "Beginner",
       "yearsOfExperience": 1
     }
   ]

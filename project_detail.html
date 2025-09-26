@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Detail - Portfolio</title>
+    <title>Project Detail - Fadhad Wahyu Aji</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/project_detail.css" />
     <link
@@ -29,7 +29,11 @@
       <section class="project-header">
         <div class="container">
           <div class="header-content">
-            <!-- <a href="index.html#portfolio" class="back-link">
+            <a
+              href="index.html#portfolio"
+              class="back-link"
+              id="back-to-portfolio"
+            >
               <svg
                 width="16"
                 height="16"
@@ -40,8 +44,8 @@
               >
                 <path d="m15 18-6-6 6-6" />
               </svg>
-              Back to Portfolio
-            </a> -->
+              Back
+            </a>
             <nav class="breadcrumb">
               <a href="index.html">Home</a>
               <span class="separator">/</span>
@@ -148,8 +152,38 @@
 
     <!-- Image Zoom Overlay -->
     <div id="image-zoom-overlay" class="image-zoom-overlay">
-      <img src="" alt="" id="zoom-image" />
-      <button class="zoom-close" id="zoom-close">×</button>
+      <div class="zoom-container">
+        <img src="" alt="" id="zoom-image" />
+
+        <!-- Navigation Controls -->
+        <button
+          class="zoom-nav zoom-prev"
+          id="zoom-prev"
+          aria-label="Previous image"
+        >
+          &#8249;
+        </button>
+        <button
+          class="zoom-nav zoom-next"
+          id="zoom-next"
+          aria-label="Next image"
+        >
+          &#8250;
+        </button>
+
+        <!-- Close Button -->
+        <button class="zoom-close" id="zoom-close" aria-label="Close">×</button>
+
+        <!-- Image Counter -->
+        <div class="zoom-counter" id="zoom-counter">1 / 1</div>
+
+        <!-- Keyboard Shortcuts Hint -->
+        <div class="zoom-shortcuts">
+          <div><kbd>←</kbd> <kbd>→</kbd> Navigate</div>
+          <div><kbd>Space</kbd> Next image</div>
+          <div><kbd>Esc</kbd> Close</div>
+        </div>
+      </div>
     </div>
 
     <!-- Back to Top Button -->

@@ -26,7 +26,15 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  background: radial-gradient(
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #111111 25%,
+    #000000 50%,
+    #0f0f0f 75%,
+    #000000 100%
+  );
+  /* radial-gradient(
       ellipse at top left,
       rgba(20, 20, 20, 0.95) 0%,
       transparent 60%
@@ -35,26 +43,18 @@ body {
       ellipse at bottom right,
       rgba(15, 15, 15, 0.9) 0%,
       transparent 70%
-    ),
-    linear-gradient(
-      135deg,
-      #0a0a0a 0%,
-      #111111 25%,
-      #000000 50%,
-      #0f0f0f 75%,
-      #000000 100%
-    ),
-    /* aksen hijau tipis */
-      radial-gradient(
+    ), */
+  /* aksen hijau tipis */
+  /* radial-gradient(
         circle at 20% 80%,
         rgba(0, 255, 136, 0.158) 1%,
-        /* hijau samar */ transparent 40%
+        transparent 40%
       ),
     radial-gradient(
       circle at 80% 20%,
       rgba(0, 255, 102, 0.082) 1%,
-      /* hijau samar banget */ transparent 35%
-    );
+      transparent 35%
+    ); */
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   color: var(--text-primary);
@@ -66,7 +66,7 @@ body {
 }
 
 /* Animasi gradient background yang halus */
-@keyframes gradientShift {
+/* @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
   }
@@ -76,7 +76,7 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 /* Tambahkan layer overlay dengan animasi subtle */
 body::after {
@@ -106,7 +106,7 @@ body::after {
 }
 
 /* Animasi orbs yang mengambang halus */
-@keyframes floatingOrbs {
+/* @keyframes floatingOrbs {
   0%,
   100% {
     background-position: 0% 0%, 100% 100%, 50% 50%;
@@ -124,7 +124,7 @@ body::after {
     background-position: 0% 100%, 100% 0%, 60% 40%;
     transform: scale(1.02) rotate(0.5deg);
   }
-}
+} */
 
 /* Subtle noise texture overlay */
 body::before {
@@ -143,14 +143,14 @@ body::before {
   animation: subtleMove 25s linear infinite;
 }
 
-@keyframes subtleMove {
+/* @keyframes subtleMove {
   0% {
     transform: translate(0, 0);
   }
   100% {
     transform: translate(35px, 35px);
   }
-}
+} */
 
 /* Navbar */
 .navbar {
@@ -840,6 +840,9 @@ body::before {
     inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease,
     background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -861,6 +864,7 @@ body::before {
   background: #2a2a2a;
   aspect-ratio: 16 / 9;
   position: relative;
+  flex-shrink: 0;
 }
 
 .card-media::after {
@@ -887,6 +891,10 @@ body::before {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease-in-out;
+}
+.card-media:hover img {
+  transform: scale(1.05);
 }
 
 .card:hover .card-media::after {
@@ -896,6 +904,10 @@ body::before {
 .card-body {
   padding: 1.2rem;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Mengisi ruang yang tersisa */
+  justify-content: space-between;
 }
 
 .card-body h3 {
@@ -2730,4 +2742,288 @@ body.modal-open {
   .edu-highlights li {
     padding-left: 1rem;
   }
+}
+
+.notification-container {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 10000;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+.notification {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.08)
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 136, 0.1);
+  transform: translateX(100%) scale(0.9);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  min-width: 280px;
+}
+
+.notification.show {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.notification.hide {
+  transform: translateX(100%) scale(0.9);
+  opacity: 0;
+}
+
+/* Notification Types */
+.notification.warning {
+  border-left: 4px solid #fbbf24;
+  background: linear-gradient(
+    135deg,
+    rgba(251, 191, 36, 0.15),
+    rgba(251, 191, 36, 0.08)
+  );
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.notification.info {
+  border-left: 4px solid #3b82f6;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15),
+    rgba(59, 130, 246, 0.08)
+  );
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.notification.success {
+  border-left: 4px solid var(--primary-color);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 136, 0.15),
+    rgba(0, 255, 136, 0.08)
+  );
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.notification.error {
+  border-left: 4px solid #ef4444;
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.15),
+    rgba(239, 68, 68, 0.08)
+  );
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+/* Notification Content */
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.notification-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.notification.warning .notification-icon {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.notification.info .notification-icon {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.notification.success .notification-icon {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--primary-color);
+}
+
+.notification.error .notification-icon {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.notification-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.notification-message {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.notification-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.notification-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Progress Bar */
+.notification-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0 0 16px 16px;
+  transform-origin: left;
+  transition: transform linear;
+}
+
+.notification.warning .notification-progress {
+  background: rgba(251, 191, 36, 0.6);
+}
+
+.notification.info .notification-progress {
+  background: rgba(59, 130, 246, 0.6);
+}
+
+.notification.success .notification-progress {
+  background: rgba(0, 255, 136, 0.6);
+}
+
+.notification.error .notification-progress {
+  background: rgba(239, 68, 68, 0.6);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .notification-container {
+    top: 70px;
+    right: 15px;
+    left: 15px;
+    max-width: none;
+  }
+
+  .notification {
+    min-width: auto;
+    padding: 0.875rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .notification-header {
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .notification-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+
+  .notification-title {
+    font-size: 0.85rem;
+  }
+
+  .notification-message {
+    font-size: 0.8rem;
+  }
+
+  .notification-close {
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-2px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+.notification.shake {
+  animation: shake 0.5s ease-in-out;
 }

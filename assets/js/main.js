@@ -817,7 +817,14 @@ function renderCertificates() {
     : [];
   grid.innerHTML = "";
 
-  certs.forEach((cert) => {
+  // Sort certificates by ID descending (certificate terbaru di atas)
+  const sortedCertificates = [...certs].sort((a, b) => {
+    const idA = parseInt(a.id) || 0;
+    const idB = parseInt(b.id) || 0;
+    return idB - idA; // Descending order (ID besar ke kecil)
+  });
+
+  sortedCertificates.forEach((cert) => {
     const item = document.createElement("div");
     item.className = "certificate";
     item.innerHTML = `<img src="${cert.image}" alt="${
@@ -855,6 +862,160 @@ function renderTechStackTab() {
   });
 }
 
+function renderEducation() {
+  const container = document.querySelector(".education-list");
+  if (!container) return;
+
+  const education = Array.isArray(appData?.education) ? appData.education : [];
+  container.innerHTML = "";
+
+  education.forEach((edu) => {
+    const item = document.createElement("article");
+    item.className = "education-item";
+
+    item.innerHTML = `
+      <img src="${edu.logo}" alt="${edu.institution}" class="edu-logo" />
+      
+      <div class="edu-details">
+        <h3 class="edu-degree">${edu.degree}</h3>
+        <p class="edu-institution">${edu.institution}</p>
+        
+        <div class="edu-meta">
+          <span class="edu-duration">${edu.duration}</span>
+        </div>
+        
+        
+      </div>
+      
+      <div class="edu-stats">
+        ${
+          edu.gpa
+            ? `
+        <div class="stats-card">
+          <span class="stat-number">${edu.gpa}</span>
+          <span class="stat-label">GPA</span>
+        </div>
+        `
+            : ""
+        }
+      </div>
+    `;
+
+    container.appendChild(item);
+  });
+}
+
+// Render Experience section dari JSON
+function renderExperience() {
+  const timeline = document.querySelector(".timeline");
+  if (!timeline) return;
+
+  const experiences = Array.isArray(appData?.experiences)
+    ? appData.experiences
+    : [];
+  timeline.innerHTML = "";
+
+  experiences.forEach((exp) => {
+    const timelineItem = document.createElement("div");
+    timelineItem.className = "timeline-item";
+
+    // Format achievements list
+    const achievementsList = exp.achievements
+      ? exp.achievements
+          .map((achievement) => `<li>${achievement}</li>`)
+          .join("")
+      : "";
+
+    // Format tech stack chips
+    const techChips = exp.techStack
+      ? exp.techStack
+          .map((tech) => `<span class="tech-chip">${tech}</span>`)
+          .join("")
+      : "";
+
+    // Format projects if available
+    const projectsList = exp.projects
+      ? exp.projects
+          .map(
+            (project) =>
+              `<li><strong>${project.name}:</strong> ${project.description}</li>`
+          )
+          .join("")
+      : "";
+
+    // Get type badge class
+    const typeClass = exp.type?.toLowerCase() || "fulltime";
+
+    timelineItem.innerHTML = `
+      <div class="timeline-marker">
+        <span class="marker-icon">💼</span>
+      </div>
+      <div class="timeline-content">
+        <div class="experience-card">
+          <div class="company-header">
+            <div class="company-logo">
+              <img src="${exp.logo}" alt="${exp.company} Logo" />
+            </div>
+            <div class="company-info">
+              <h3 class="position-title">${exp.position}</h3>
+              <p class="company-name">${exp.company}</p>
+              <span class="duration">${exp.duration}</span>
+            </div>
+            <div class="employment-type">
+              <span class="type-badge ${typeClass}">${exp.type}</span>
+            </div>
+          </div>
+
+          <div class="job-description">
+            <p>${exp.description}</p>
+          </div>
+
+          ${
+            achievementsList
+              ? `
+          <div class="achievements">
+            <h4>Key Achievements:</h4>
+            <ul>
+              ${achievementsList}
+            </ul>
+          </div>
+          `
+              : ""
+          }
+
+          ${
+            projectsList
+              ? `
+          <div class="achievements">
+            <h4>Key Projects:</h4>
+            <ul>
+              ${projectsList}
+            </ul>
+          </div>
+          `
+              : ""
+          }
+
+          ${
+            techChips
+              ? `
+          <div class="tech-stack-used">
+            <h4>Technologies Used:</h4>
+            <div class="tech-chips">
+              ${techChips}
+            </div>
+          </div>
+          `
+              : ""
+          }
+        </div>
+      </div>
+    `;
+
+    timeline.appendChild(timelineItem);
+  });
+}
+
 // Load semua data dari JSON lalu render UI
 async function loadAppData() {
   try {
@@ -868,8 +1029,10 @@ async function loadAppData() {
 
     // Render semua bagian UI
     renderProfile();
+    renderEducation();
+    renderExperience();
     generateProjectCards();
-    renderCertificates(); // Ini akan otomatis re-bind modal
+    renderCertificates();
     renderTechStackTab();
 
     return Promise.resolve();
@@ -904,6 +1067,117 @@ async function loadAppData() {
     generateProjectCards();
     return Promise.resolve();
   }
+}
+
+// Render Experience section dari JSON
+function renderExperience() {
+  const timeline = document.querySelector(".timeline");
+  if (!timeline) return;
+
+  const experiences = Array.isArray(appData?.experiences)
+    ? appData.experiences
+    : [];
+  timeline.innerHTML = "";
+
+  experiences.forEach((exp) => {
+    const timelineItem = document.createElement("div");
+    timelineItem.className = "timeline-item";
+
+    // Format achievements list
+    const achievementsList = exp.achievements
+      ? exp.achievements
+          .map((achievement) => `<li>${achievement}</li>`)
+          .join("")
+      : "";
+
+    // Format tech stack chips
+    const techChips = exp.techStack
+      ? exp.techStack
+          .map((tech) => `<span class="tech-chip">${tech}</span>`)
+          .join("")
+      : "";
+
+    // Format projects if available
+    const projectsList = exp.projects
+      ? exp.projects
+          .map(
+            (project) =>
+              `<li><strong>${project.name}:</strong> ${project.description}</li>`
+          )
+          .join("")
+      : "";
+
+    // Get type badge class
+    const typeClass = exp.type?.toLowerCase() || "fulltime";
+
+    timelineItem.innerHTML = `
+      <div class="timeline-marker">
+        <span class="marker-icon">💼</span>
+      </div>
+      <div class="timeline-content">
+        <div class="experience-card">
+          <div class="company-header">
+            <div class="company-logo">
+              <img src="${exp.logo}" alt="${exp.company} Logo" />
+            </div>
+            <div class="company-info">
+              <h3 class="position-title">${exp.position}</h3>
+              <p class="company-name">${exp.company}</p>
+              <span class="duration">${exp.duration}</span>
+            </div>
+            <div class="employment-type">
+              <span class="type-badge ${typeClass}">${exp.type}</span>
+            </div>
+          </div>
+
+          <div class="job-description">
+            <p>${exp.description}</p>
+          </div>
+
+          ${
+            achievementsList
+              ? `
+          <div class="achievements">
+            <h4>Key Achievements:</h4>
+            <ul>
+              ${achievementsList}
+            </ul>
+          </div>
+          `
+              : ""
+          }
+
+          ${
+            projectsList
+              ? `
+          <div class="achievements">
+            <h4>Key Projects:</h4>
+            <ul>
+              ${projectsList}
+            </ul>
+          </div>
+          `
+              : ""
+          }
+
+          ${
+            techChips
+              ? `
+          <div class="tech-stack-used">
+            <h4>Technologies Used:</h4>
+            <div class="tech-chips">
+              ${techChips}
+            </div>
+          </div>
+          `
+              : ""
+          }
+        </div>
+      </div>
+    `;
+
+    timeline.appendChild(timelineItem);
+  });
 }
 
 // Initialize all functions
